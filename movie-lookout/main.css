@@ -26,6 +26,16 @@ html {
   align-items: center;
 }
 
+.header {
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #97DECE;
+  border-bottom: darkblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .logo {
   height: 5rem;
   margin-left: 3rem;
@@ -35,7 +45,7 @@ html {
   flex: 0 0 40%;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .search__input {
   font-family: inherit;
@@ -73,30 +83,30 @@ html {
   fill: #999;
 }
 
-.user-nav {
+.userNav {
   align-self: stretch;
   display: flex;
   align-items: center;
   margin-right: 3rem;
 }
-.user-nav > * {
+.userNav > * {
   padding: 0 2rem;
   cursor: pointer;
   height: 100%;
   display: flex;
   align-items: center;
 }
-.user-nav > *:hover {
+.userNav > *:hover {
   background-color: #439A97;
 }
-.user-nav__icon-box {
+.userNav__iconBox {
   position: relative;
 }
-.user-nav__icon {
+.userNav__icon {
   height: 3rem;
   width: 3rem;
 }
-.user-nav__notification {
+.userNav__notification {
   font-size: 1.5rem;
   height: 1.75rem;
   width: 1.75rem;

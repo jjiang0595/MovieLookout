@@ -1,3 +1,14 @@
+// HEADER
+.header {
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #97DECE;
+  border-bottom: darkblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 // LOGO
 .logo {
   height: 5rem;
@@ -10,7 +21,7 @@
 
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
 
   &__input {
     font-family: inherit;
@@ -55,7 +66,7 @@
   }
 }
 
-.user-nav {
+.userNav {
   align-self: stretch;
   display: flex;
   align-items: center;
@@ -73,7 +84,7 @@
     background-color: #439A97;
   }
 
-  &__icon-box {
+  &__iconBox {
     position: relative;
   }
 
