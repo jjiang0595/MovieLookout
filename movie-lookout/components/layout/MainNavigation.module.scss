@@ -92,6 +92,7 @@
   &__icon {
     height: 3rem;
     width: 3rem;
+    margin-right: 5px;
   }
 
   &__notification {
@@ -102,8 +103,8 @@
     background-color: #ff5b5b;
     color: #fff;
     position: absolute;
-    top: 1.5rem;
-    right: 1.1rem;
+    top: 1rem;
+    left: 4rem;
 
     display: flex;
     justify-content: center;

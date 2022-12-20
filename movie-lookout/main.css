@@ -12,7 +12,7 @@ html {
   font-size: 62.5%;
   max-width: 120rem;
   margin: 0 auto;
-  background-color: #CBEDD5;
+  background-image: linear-gradient(to bottom, #439a97, #3baca5, #30bfb2, #22d2bd, #11e5c7, #3fecc9, #59f4cb, #6efbcd, #8ef8cc, #a7f4cd, #bbf1d0, #cbedd5);
 }
 
 .container {
@@ -99,6 +99,7 @@ html {
 .userNav__icon {
   height: 3rem;
   width: 3rem;
+  margin-right: 5px;
 }
 .userNav__notification {
   font-size: 1.5rem;
@@ -108,8 +109,8 @@ html {
   background-color: #ff5b5b;
   color: #fff;
   position: absolute;
-  top: 1.5rem;
-  right: 1.1rem;
+  top: 1rem;
+  left: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
