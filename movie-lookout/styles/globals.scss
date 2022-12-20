@@ -13,10 +13,11 @@ $bp-smallest: 31.25em; // 500px
 }
 
 html {
+  font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
   font-size: 62.5%;
   max-width: 120rem;
-    margin: 0 auto;
+  margin: 0 auto;
   background-color: #CBEDD5;
 }
 

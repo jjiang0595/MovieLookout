@@ -3,7 +3,9 @@
   cursor: pointer;
 }
 .movieItem:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
+  border-radius: 6px;
+  box-shadow: -3px -2px 32px 0px rgba(0, 0, 0, 0.29);
 }
 
 .image {
@@ -20,6 +22,8 @@
 .content {
   text-align: center;
   padding: 1rem;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 .content h3 {
   font-size: 1.25rem;
