@@ -15,8 +15,7 @@ html {
 }
 
 .container {
-  background: gray;
-  min-height: 50rem;
+  min-height: 100vh;
 }
 
 .header {
@@ -27,16 +26,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.header {
-  font-size: 1.4rem;
-  height: 7rem;
-  background-color: #97DECE;
-  border-bottom: darkblue;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border-bottom: 3px black solid;
 }
 
 .logo {
@@ -100,7 +90,7 @@ html {
   align-items: center;
 }
 .userNav > *:hover {
-  background-color: #439A97;
+  background-color: #62B6B7;
 }
 .userNav__iconBox {
   position: relative;

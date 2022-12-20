@@ -1,0 +1,29 @@
+.movieItem {
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.movieItem:hover {
+  transform: scale(1.05);
+}
+
+.image {
+  overflow: hidden;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+.image img {
+  width: 18rem;
+  height: 25.8rem;
+  object-fit: cover;
+}
+
+.content {
+  text-align: center;
+  padding: 1rem;
+}
+.content h3 {
+  font-size: 1.25rem;
+  color: #2c292b;
+}
+
+/*# sourceMappingURL=MovieItem.module.css.map */

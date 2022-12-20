@@ -1,10 +1,10 @@
 import '../styles/globals.scss'
-import MainNavigation from "../components/layout/MainNavigation";
+import Layout from "../components/layout/Layout";
 
 export default function App({Component, pageProps}) {
     return (
-        <MainNavigation>
+        <Layout>
             <Component {...pageProps} />
-        </MainNavigation>
+        </Layout>
     )
 }

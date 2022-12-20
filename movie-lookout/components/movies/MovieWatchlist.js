@@ -1,3 +1,5 @@
+import {useContext} from "react";
+
 function MovieWatchlist() {
     const { watchlist } = useContext(MovieContext);
     return (
