@@ -9,11 +9,22 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  width: 80%;
 }
 
 .container {
   background: gray;
   min-height: 50rem;
+}
+
+.header {
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #97DECE;
+  border-bottom: darkblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /*# sourceMappingURL=globals.css.map */

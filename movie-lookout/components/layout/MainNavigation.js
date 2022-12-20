@@ -13,6 +13,7 @@ function MainNavigation() {
                 </form>
                 <nav className={styles.userNav}>
                     <div className={styles.userNav__iconBox}>
+                        <span>Watch List</span>
                         <svg className={styles.userNav__icon}>
                             <use href="/sprite.svg#icon-bookmarks"></use>
                         </svg>
