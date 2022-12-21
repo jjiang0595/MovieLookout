@@ -85,14 +85,31 @@
     background-color: #62B6B7;
   }
 
+
   &__iconBox {
     position: relative;
+
+    &_user {
+      width: 12rem;
+    }
   }
 
   &__icon {
     height: 3rem;
     width: 3rem;
     margin-right: 7px;
+  }
+
+  &__button {
+    border: none;
+    background-color: transparent;
+    font-size: 1.4rem;
+    font-weight: 100;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__notification {
@@ -110,4 +127,30 @@
     justify-content: center;
     align-items: center;
   }
+
+  &__dropdown {
+    width: 12rem;
+    height: 10rem;
+    position: absolute;
+    top: 7rem;
+    right: 38.25rem;
+
+    background-color: #62B6B7;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    grid-gap: .5rem;
+  }
+
+  &__anchor {
+    text-decoration: none;
+    color: #000000;
+  }
 }
+
+.active {
+  background-color: #62B6B7;
+}
+

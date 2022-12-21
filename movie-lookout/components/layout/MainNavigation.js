@@ -1,5 +1,15 @@
 import styles from './MainNavigation.module.scss';
+import {useState} from "react";
+import Link from "next/link";
+
 function MainNavigation() {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleSidebar = () => {
+        setIsOpen(!isOpen);
+        console.log(isOpen);
+    }
+
+
     return (
         <header className={styles.header}>
             <img src="/MovieLookoutLogo.png" alt="movie logo" className={styles.logo} />
@@ -19,11 +29,15 @@ function MainNavigation() {
                         <span className={styles.userNav__notification}>7</span>
                         <span><b>Watch List</b></span>
                     </div>
-                    <div className={styles.userNav__iconBox}>
+                    <div className={`${styles.userNav__iconBox_user} ${isOpen ? styles.active : ''}`} onClick={toggleSidebar}>
                         <svg className={styles.userNav__icon}>
                             <use href="/sprite.svg#icon-user"></use>
                         </svg>
                         <span><b>Guest</b></span>
+                        {isOpen && <div className={styles.userNav__dropdown}>
+                            <Link href="/" className={styles.userNav__anchor}>Settings</Link>
+                            <Link href="/" className={styles.userNav__anchor}>Logout</Link>
+                        </div>}
                     </div>
                 </nav>
         </header>

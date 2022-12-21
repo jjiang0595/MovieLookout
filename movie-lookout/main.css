@@ -92,10 +92,23 @@ html {
 .userNav__iconBox {
   position: relative;
 }
+.userNav__iconBox_user {
+  width: 12rem;
+}
 .userNav__icon {
   height: 3rem;
   width: 3rem;
   margin-right: 7px;
+}
+.userNav__button {
+  border: none;
+  background-color: transparent;
+  font-size: 1.4rem;
+  font-weight: 100;
+  cursor: pointer;
+}
+.userNav__button:focus {
+  outline: none;
 }
 .userNav__notification {
   font-size: 1.5rem;
@@ -110,6 +123,27 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.userNav__dropdown {
+  width: 12rem;
+  height: 10rem;
+  position: absolute;
+  top: 7rem;
+  right: 38.25rem;
+  background-color: #62B6B7;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 0.5rem;
+}
+.userNav__anchor {
+  text-decoration: none;
+  color: #000000;
+}
+
+.active {
+  background-color: #62B6B7;
 }
 
 /*# sourceMappingURL=main.css.map */
