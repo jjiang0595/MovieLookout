@@ -3,19 +3,22 @@ import styles from './MovieList.module.scss';
 
 function MovieList(props) {
     return (
-        <list>
-            <ul className={styles.list}>
-                {props.movies.map((movie) => (
-                    <MovieItem
-                        key={movie.id}
-                        id={movie.id}
-                        title={movie.title}
-                        image={movie.image}
-                        description={movie.description}
-                    />
-                ))}
-            </ul>
-        </list>
+        <div className={styles.list}>
+            <list>
+                <h1 className={styles.list__trending}>Trending</h1>
+                <ul className={styles.list__movies}>
+                    {props.movies.map((movie) => (
+                        <MovieItem
+                            key={movie.id}
+                            id={movie.id}
+                            title={movie.title}
+                            image={movie.image}
+                            description={movie.description}
+                        />
+                    ))}
+                </ul>
+            </list>
+        </div>
     );
 }
 

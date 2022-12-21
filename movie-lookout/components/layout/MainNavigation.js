@@ -17,13 +17,13 @@ function MainNavigation() {
                             <use href="/sprite.svg#icon-bookmarks"></use>
                         </svg>
                         <span className={styles.userNav__notification}>7</span>
-                        <span>Watch List</span>
+                        <span><b>Watch List</b></span>
                     </div>
                     <div className={styles.userNav__iconBox}>
                         <svg className={styles.userNav__icon}>
                             <use href="/sprite.svg#icon-user"></use>
                         </svg>
-                        <span>Guest</span>
+                        <span><b>Guest</b></span>
                     </div>
                 </nav>
         </header>
