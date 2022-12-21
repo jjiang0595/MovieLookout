@@ -1,10 +1,21 @@
 .footer {
+  text-decoration: none;
   background-color: #000;
   color: #fff;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.footer > * {
+  margin: 0.5rem 0;
+}
+.footer__a {
+  text-decoration: underline;
+  color: #01b4e4;
+  margin: 1rem 0;
 }
 
 /*# sourceMappingURL=Footer.module.css.map */
