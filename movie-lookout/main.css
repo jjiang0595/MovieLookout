@@ -93,12 +93,13 @@ html {
   position: relative;
 }
 .userNav__iconBox_user {
-  width: 12rem;
+  flex-direction: row;
+  justify-content: center;
 }
 .userNav__icon {
   height: 3rem;
   width: 3rem;
-  margin-right: 7px;
+  margin-right: 0.7rem;
 }
 .userNav__button {
   border: none;
@@ -125,21 +126,27 @@ html {
   align-items: center;
 }
 .userNav__dropdown {
-  width: 12rem;
-  height: 10rem;
   position: absolute;
-  top: 7rem;
-  right: 38.25rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 14rem;
+  width: 11.7rem;
   background-color: #62B6B7;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-  grid-gap: 0.5rem;
+  align-items: stretch;
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+  overflow: hidden;
 }
-.userNav__anchor {
+.userNav__dropdown__a {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  flex-direction: column;
   text-decoration: none;
   color: #000000;
+}
+.userNav__dropdown__a:hover {
+  background-color: #CBEDD5;
 }
 
 .active {
