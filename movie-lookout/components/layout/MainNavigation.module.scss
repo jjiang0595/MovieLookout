@@ -88,6 +88,8 @@
 
   &__iconBox {
     position: relative;
+    text-decoration: none;
+    color: black;
 
     &_user {
       flex-direction: row;

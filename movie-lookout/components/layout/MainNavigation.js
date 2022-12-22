@@ -11,7 +11,9 @@ function MainNavigation() {
 
     return (
         <header className={styles.header}>
-            <img src="/MovieLookoutLogo.png" alt="movie logo" className={styles.logo}/>
+            <Link href={'/'}>
+                <img src="/MovieLookoutLogo.png" alt="movie logo" className={styles.logo}/>
+            </Link>
             <form action="#" className={styles.search}>
                 <input type="text" className={styles.search__input} placeholder="Search for a movie"/>
                 <button className={styles.search__button}>
@@ -21,13 +23,13 @@ function MainNavigation() {
                 </button>
             </form>
             <nav className={styles.userNav}>
-                <div className={styles.userNav__iconBox}>
+                <Link href="/watchlist" className={styles.userNav__iconBox}>
                     <svg className={styles.userNav__icon}>
                         <use href="/sprite.svg#icon-bookmarks"></use>
                     </svg>
-                    <span className={styles.userNav__notification}>7</span>
+                    <span className={styles.userNav__notification}>0</span>
                     <span><b>Watch List</b></span>
-                </div>
+                </Link>
                 <div className={`${styles.userNav__iconBox_user} ${isOpen ? styles.active : ''}`}
                      onClick={toggleSidebar}>
                     <svg className={styles.userNav__icon}>
