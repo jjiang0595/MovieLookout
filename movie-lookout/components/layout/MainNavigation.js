@@ -43,9 +43,10 @@ function MainNavigation() {
                         <Link href="/" className={styles.userNav__dropdown__a}>Settings</Link>
                         <Link href="/" className={styles.userNav__dropdown__a}>Logout</Link>
                     </div>}
-                    {!authCtx.isLoggedIn && isOpen && <div className={styles.userNav__dropdown}>
-                        <Link href="/" className={styles.userNav__dropdown__a}>Login</Link>
-                    </div>}
+                    {!authCtx.isLoggedIn && isOpen &&
+                        <div className={`${styles.userNav__dropdown} ${styles.userNav__dropdown__loggedIn}`}>
+                            <Link href="/" className={styles.userNav__dropdown__a}>Login</Link>
+                        </div>}
                 </div>
             </nav>
         </header>

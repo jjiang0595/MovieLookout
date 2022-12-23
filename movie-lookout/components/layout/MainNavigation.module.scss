@@ -143,6 +143,10 @@
     border-bottom-right-radius: 3rem;
     overflow: hidden;
 
+    &__loggedIn {
+        margin-top: 10rem;
+    }
+
     &__a {
       display: flex;
       align-items: center;

@@ -140,6 +140,9 @@ html {
   border-bottom-right-radius: 3rem;
   overflow: hidden;
 }
+.userNav__dropdown__loggedIn {
+  margin-top: 10rem;
+}
 .userNav__dropdown__a {
   display: flex;
   align-items: center;
