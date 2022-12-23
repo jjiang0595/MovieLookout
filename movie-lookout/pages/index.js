@@ -58,7 +58,7 @@ const DUMMY_MEETUPS = [
 
 export default function Home(props) {
     return (
-        <AuthContext.Provider>
+        <>
             <Head>
                 <title>Movie Lookout</title>
                 <meta
@@ -70,7 +70,6 @@ export default function Home(props) {
             <MovieList
                 movies={DUMMY_MEETUPS}
             />
-        </AuthContext.Provider>
-
+        </>
     )
 }

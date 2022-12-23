@@ -1,15 +1,10 @@
 import {useContext} from "react";
+import MovieWatchlist from "../../components/movies/MovieWatchlist";
 
-const MovieWatchlist = () => {
-
+const Watchlist = () => {
     return (
-        <div>
-            <h1>Watchlist</h1>
-            <div className="movie-grid">
-
-            </div>
-        </div>
+        <MovieWatchlist/>
     );
 }
 
-export default MovieWatchlist;
+export default Watchlist;

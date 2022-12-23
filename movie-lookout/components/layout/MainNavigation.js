@@ -11,7 +11,6 @@ function MainNavigation() {
         setIsOpen(!isOpen);
     }
 
-
     return (
         <header className={styles.header}>
             <Link href={'/'}>
@@ -26,6 +25,7 @@ function MainNavigation() {
                 </button>
             </form>
             <nav className={styles.userNav}>
+                {/*DISPLAY WATCHLIST ONLY WHEN LOGGED IN*/}
                 <Link href="/watchlist" className={styles.userNav__iconBox}>
                     <svg className={styles.userNav__icon}>
                         <use href="/sprite.svg#icon-bookmarks"></use>
