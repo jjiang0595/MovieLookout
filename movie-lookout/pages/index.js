@@ -1,5 +1,8 @@
 import Head from 'next/head'
 import MovieList from "../components/movies/MovieList";
+import {useEffect, useState} from "react";
+import AuthContext from "../store/auth-context";
+import Layout from "../components/layout/Layout";
 
 const DUMMY_MEETUPS = [
     {
@@ -55,7 +58,7 @@ const DUMMY_MEETUPS = [
 
 export default function Home(props) {
     return (
-        <>
+        <AuthContext.Provider>
             <Head>
                 <title>Movie Lookout</title>
                 <meta
@@ -64,7 +67,10 @@ export default function Home(props) {
                 />
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <MovieList movies={DUMMY_MEETUPS}/>
-        </>
+            <MovieList
+                movies={DUMMY_MEETUPS}
+            />
+        </AuthContext.Provider>
+
     )
 }

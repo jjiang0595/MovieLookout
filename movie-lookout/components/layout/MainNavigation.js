@@ -1,8 +1,11 @@
 import styles from './MainNavigation.module.scss';
-import {useState} from "react";
+import {useState, useContext} from "react";
 import Link from "next/link";
+import AuthContext from "../../store/auth-context";
 
 function MainNavigation() {
+    const authCtx = useContext(AuthContext);
+
     const [isOpen, setIsOpen] = useState(false);
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
@@ -36,9 +39,12 @@ function MainNavigation() {
                         <use href="/sprite.svg#icon-user"></use>
                     </svg>
                     <span><b>Guest</b></span>
-                    {isOpen && <div className={styles.userNav__dropdown}>
+                    {authCtx.isLoggedIn && isOpen && <div className={styles.userNav__dropdown}>
                         <Link href="/" className={styles.userNav__dropdown__a}>Settings</Link>
                         <Link href="/" className={styles.userNav__dropdown__a}>Logout</Link>
+                    </div>}
+                    {!authCtx.isLoggedIn && isOpen && <div className={styles.userNav__dropdown}>
+                        <Link href="/" className={styles.userNav__dropdown__a}>Login</Link>
                     </div>}
                 </div>
             </nav>

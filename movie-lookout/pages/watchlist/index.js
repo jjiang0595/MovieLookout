@@ -1,11 +1,13 @@
 import {useContext} from "react";
 
 const MovieWatchlist = () => {
-    // const {watchlist} = useContext(MovieContext);
+
     return (
         <div>
-            <h2>Watchlist</h2>
+            <h1>Watchlist</h1>
+            <div className="movie-grid">
 
+            </div>
         </div>
     );
 }
