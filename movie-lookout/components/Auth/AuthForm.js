@@ -12,6 +12,19 @@ const AuthForm = (props) => {
         }
     }
 
+    const loginHandler = (event, email, password) => {
+        event.preventDefault()
+
+    }
+
+    const registerHandler = (event, email, password) => {
+        event.preventDefault();
+
+        if (email.length === 0 || password.length === 0) {
+            return alert('Please enter a valid email and password.');
+        }
+    }
+
     return (
         <div className={styles.auth}>
             <div className={styles.auth__container}>
@@ -24,7 +37,7 @@ const AuthForm = (props) => {
                     </button>
                 </div>
                 {authType === 'login' ?
-                    <form className={styles.form}>
+                    <form onSubmit={loginHandler} className={styles.form}>
                         <p className={styles.form__title}>Login</p>
                         <div className={styles.control}>
                             <input className={styles.control__input} type="email" id="email" placeholder="Email" required/>
@@ -37,7 +50,7 @@ const AuthForm = (props) => {
                         </div>
                     </form>
                     :
-                    <form className={styles.form}>
+                    <form onSubmit={registerHandler} className={styles.form}>
                         <p className={styles.form__title}>Register</p>
                         <div className={styles.control}>
                             <input className={styles.control__input} type="email" id="email" placeholder="Email" required/>
