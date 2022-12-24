@@ -1,29 +1,36 @@
 .authSelect {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   width: inherit;
+  height: 15rem;
   justify-content: space-evenly;
-  padding: 1rem;
   background-color: rgba(255, 255, 255, 0.9);
 }
 .authSelect > * {
+  font-weight: 600;
+  flex: 1;
+  padding-top: 0.5rem;
+  padding-bottom: 3px;
   border: none;
-  background: none;
   cursor: pointer;
 }
-.authSelect > *:hover {
+.authSelect > *:not(.active):hover {
   background-color: white;
+}
+
+.active {
+  border-bottom: 3px solid #8ef8cc;
+  padding-bottom: 0;
 }
 
 .auth {
   background-image: url(../../public/spiderman.jpg);
   background-size: cover;
   display: flex;
-  flex: 1;
   opacity: 0.9;
   height: 73.25rem;
   justify-content: center;
   align-items: center;
+  box-sizing: content-box;
 }
 .auth__container {
   display: flex;
@@ -40,12 +47,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 30rem;
+  height: 35rem;
   width: inherit;
-  padding: 5rem 10rem 5rem 10rem;
+  padding: 5rem 10rem 2rem 10rem;
   box-sizing: border-box;
 }
 .form__title {
+  padding-bottom: 3rem;
   font-weight: 700;
   font-size: 3rem;
 }
