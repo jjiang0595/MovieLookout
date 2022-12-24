@@ -17,9 +17,7 @@ function MovieWatchlist(props) {
                 <div class={styles.list__empty}>
                     <span class={styles.list__empty__text}>Your watchlist is empty.</span>
                     <img src="/dog-digging-hole.png" alt="dog digging hole" className={styles.list__empty__img}/>
-
                     <a href="/">Click here to add movies to your watchlist.</a>
-
                 </div>
             }
         </div>

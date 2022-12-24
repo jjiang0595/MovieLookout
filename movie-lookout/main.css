@@ -11,7 +11,7 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
   max-width: 120rem;
-  min-height: 100vh;
+  min-height: 100%;
   margin: 0 auto;
   background-image: linear-gradient(to bottom, #439a97, #3baca5, #30bfb2, #22d2bd, #11e5c7, #3fecc9, #59f4cb, #6efbcd, #8ef8cc, #a7f4cd, #bbf1d0, #cbedd5);
 }
@@ -75,6 +75,9 @@ table {
   justify-content: space-between;
   align-items: center;
   border-bottom: 3px black solid;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none;
 }
 
 .logo {

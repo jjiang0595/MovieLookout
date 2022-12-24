@@ -1,0 +1,67 @@
+.authSelect {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: inherit;
+  justify-content: space-evenly;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.authSelect > * {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.authSelect > *:hover {
+  background-color: white;
+}
+
+.auth {
+  background-image: url(../../public/spiderman.jpg);
+  background-size: cover;
+  display: flex;
+  flex: 1;
+  opacity: 0.9;
+  height: 73.25rem;
+  justify-content: center;
+  align-items: center;
+}
+.auth__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 45rem;
+  height: 30rem;
+}
+
+.form {
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30rem;
+  width: inherit;
+  padding: 5rem 10rem 5rem 10rem;
+  box-sizing: border-box;
+}
+.form__title {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.control {
+  margin-bottom: 2rem;
+}
+.control__input {
+  font-size: 2rem;
+  padding: 1rem;
+  border: none;
+  border-bottom: 1px solid #000;
+  background-color: transparent;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=AuthForm.module.css.map */
