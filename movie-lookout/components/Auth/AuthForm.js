@@ -27,26 +27,26 @@ const AuthForm = (props) => {
                     <form className={styles.form}>
                         <p className={styles.form__title}>Login</p>
                         <div className={styles.control}>
-                            <input type="email" id="email" placeholder="Email" required/>
+                            <input className={styles.control__input} type="email" id="email" placeholder="Email" required/>
                         </div>
                         <div className={styles.control}>
-                            <input type="password" id="password" placeholder="Password" required/>
+                            <input className={styles.control__input} type="password" id="password" placeholder="Password" required/>
                         </div>
                         <div className={styles.actions}>
-                            <button>Login</button>
+                            <button className={styles.actions__button}>Login</button>
                         </div>
                     </form>
                     :
                     <form className={styles.form}>
                         <p className={styles.form__title}>Register</p>
                         <div className={styles.control}>
-                            <input type="email" id="email" placeholder="Email" required/>
+                            <input className={styles.control__input} type="email" id="email" placeholder="Email" required/>
                         </div>
                         <div className={styles.control}>
-                            <input type="password" id="password" placeholder="Password" required/>
+                            <input className={styles.control__input} type="password" id="password" placeholder="Password" required/>
                         </div>
                         <div className={styles.actions}>
-                            <button>Register</button>
+                            <button className={styles.actions__button}>Register</button>
                         </div>
                     </form>}
             </div>

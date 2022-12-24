@@ -1,11 +1,11 @@
 .authSelect {
   display: flex;
   width: inherit;
-  height: 15rem;
   justify-content: space-evenly;
   background-color: rgba(255, 255, 255, 0.9);
 }
 .authSelect > * {
+  height: 5rem;
   font-weight: 600;
   flex: 1;
   padding-top: 0.5rem;
@@ -35,10 +35,7 @@
 .auth__container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 45rem;
-  height: 30rem;
 }
 
 .form {
@@ -47,10 +44,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 35rem;
   width: inherit;
-  padding: 5rem 10rem 2rem 10rem;
+  padding: 3rem 10rem 5rem 10rem;
+  margin-bottom: 3rem;
   box-sizing: border-box;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
 }
 .form__title {
   padding-bottom: 3rem;
@@ -62,14 +61,30 @@
   margin-bottom: 2rem;
 }
 .control__input {
-  font-size: 2rem;
-  padding: 1rem;
+  color: inherit;
+  background-color: #f4f2f2;
   border: none;
-  border-bottom: 1px solid #000;
-  background-color: transparent;
+  padding: 1rem 3rem;
+  border-radius: 25px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  text-align: center;
-  font-weight: 700;
+}
+.actions__button {
+  background-color: #b0aaaa;
+  font-weight: 600;
+  font-size: 1.6rem;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.actions__button:hover {
+  background-color: #8ef8cc;
 }
 
 /*# sourceMappingURL=AuthForm.module.css.map */

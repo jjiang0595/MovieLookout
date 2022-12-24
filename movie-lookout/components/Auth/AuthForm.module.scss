@@ -1,84 +1,102 @@
 .authSelect {
-    display: flex;
-    width: inherit;
-    height: 15rem;
+  display: flex;
+  width: inherit;
 
-    justify-content: space-evenly;
-    background-color: rgba(255, 255, 255, .90);
+  justify-content: space-evenly;
+  background-color: rgba(255, 255, 255, .90);
 
+  & > * {
+    height: 5rem;
+    font-weight: 600;
+    flex: 1;
+    padding-top: .5rem;
+    padding-bottom: 3px;
+    border: none;
+    cursor: pointer;
 
-    & > * {
-        font-weight: 600;
-        flex: 1;
-        padding-top: .5rem;
-        padding-bottom: 3px;
-        border: none;
-        cursor: pointer;
-
-        &:not(.active):hover  {
-            background-color: white;
-        }
+    &:not(.active):hover {
+      background-color: white;
     }
+  }
 }
 
 .active {
-    border-bottom: 3px solid #8ef8cc;
-    padding-bottom: 0;
+  border-bottom: 3px solid #8ef8cc;
+  padding-bottom: 0;
 }
 
 // AUTH
 .auth {
-    background-image: url(../../public/spiderman.jpg);
-    background-size: cover;
+  background-image: url(../../public/spiderman.jpg);
+  background-size: cover;
 
+  display: flex;
+  opacity: .9;
+  height: 73.25rem;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+
+
+  &__container {
     display: flex;
-    opacity: .9;
-    height: 73.25rem;
-    justify-content: center;
-    align-items: center;
-    box-sizing: content-box;
-
-
-    &__container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 45rem;
-        height: 30rem;
-    }
+    flex-direction: column;
+    width: 45rem;
+  }
 }
 
 .form {
-    background-color: rgba(255, 255, 255, .90);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 35rem;
-    width: inherit;
-    padding: 5rem 10rem 2rem 10rem;
-    box-sizing: border-box;
+  background-color: rgba(255, 255, 255, .90);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: inherit;
+  padding: 3rem 10rem 5rem 10rem;
+  margin-bottom: 3rem;
+  box-sizing: border-box;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
 
-    &__title {
-        padding-bottom: 3rem;
-        font-weight: 700;
-        font-size: 3rem;
-    }
+  &__title {
+    padding-bottom: 3rem;
+    font-weight: 700;
+    font-size: 3rem;
+  }
 }
 
 .control {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 
-    &__input {
-        font-size: 2rem;
-        padding: 1rem;
-        border: none;
-        border-bottom: 1px solid #000;
-        background-color: transparent;
-        width: 100%;
-        text-align: center;
-        font-weight: 700;
-    }
+  &__input {
+    color: inherit;
+    background-color: #f4f2f2;
+    border: none;
+    padding: 1rem 3rem;
+    border-radius: 25px;
+  }
 }
 
+// button
+.actions {
+    display: flex;
+  justify-content: center;
+    width: 100%;
+
+    &__button {
+      background-color: #b0aaaa;
+        font-weight: 600;
+        font-size: 1.6rem;
+        padding: 1rem 3rem;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all .2s ease;
+
+        &:hover {
+        background-color: #8ef8cc;
+        }
+    }
+
+
+}
