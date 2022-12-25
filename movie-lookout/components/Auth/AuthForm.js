@@ -16,13 +16,34 @@ const AuthForm = (props) => {
     }
 
     const submitHandler = (event) => {
+        console.log(process.env.NEXT_PUBLIC_API_KEY)
         event.preventDefault()
 
-        if(authType) {
-
+        let url;
+        if (authType) {
+            url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.NEXT_PUBLIC_API_KEY}`
         } else {
-
+            url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.NEXT_PUBLIC_API_KEY}`
         }
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+                email: emailInputRef.current.value,
+                password: passwordInputRef.current.value,
+                returnSecureToken: true
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {
+            if (res.ok) {
+
+            } else {
+                res.json().then(data => {
+                    let errorMessage = 'Authentication failed!'
+                })
+            }
+        })
 
     }
 
@@ -34,33 +55,32 @@ const AuthForm = (props) => {
                     <button className={(authType ? styles.active : '')}
                             onClick={authTypeHandler(true)}>Login
                     </button>
-                    <button className={(!authType? styles.active : '')}
+                    <button className={(!authType ? styles.active : '')}
                             onClick={authTypeHandler(false)}>Register
                     </button>
                 </div>
-                    <form onSubmit={submitHandler} className={styles.form}>
-                        <p className={styles.form__title}>{authType ? 'Login' : 'Register'}</p>
-                        <div className={styles.control}>
-                            <svg className={styles.control__icon}>
-                                <use href="/sprite.svg#icon-user"></use>
-                            </svg>
-                            <input ref={emailInputRef} className={styles.control__input} type="email" id="email" placeholder="Email"
-                                   required/>
-                        </div>
-                        <div className={styles.control}>
-                            <svg className={styles.control__icon}>
-                                <use href="/sprite.svg#icon-key"></use>
-                            </svg>
-                            <input ref={passwordInputRef} className={styles.control__input} type="password" id="password"
-                                   placeholder="Password" required/>
-                        </div>
-                        <div className={styles.actions}>
-                            <button className={styles.actions__button}>{authType ? 'Login' : 'Register'}</button>
-                        </div>
-                    </form>
-
+                <form onSubmit={submitHandler} className={styles.form}>
+                    <p className={styles.form__title}>{authType ? 'Login' : 'Register'}</p>
+                    <div className={styles.control}>
+                        <svg className={styles.control__icon}>
+                            <use href="/sprite.svg#icon-user"></use>
+                        </svg>
+                        <input ref={emailInputRef} className={styles.control__input} type="email" id="email"
+                               placeholder="Email"
+                               required/>
+                    </div>
+                    <div className={styles.control}>
+                        <svg className={styles.control__icon}>
+                            <use href="/sprite.svg#icon-key"></use>
+                        </svg>
+                        <input ref={passwordInputRef} className={styles.control__input} type="password" id="password"
+                               placeholder="Password" required/>
+                    </div>
+                    <div className={styles.actions}>
+                        <button className={styles.actions__button}>{authType ? 'Login' : 'Register'}</button>
+                    </div>
+                </form>
             </div>
-
         </div>
     )
 }
