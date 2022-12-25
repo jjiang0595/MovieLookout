@@ -1,15 +1,18 @@
 import styles from './AuthForm.module.scss'
-import {useState} from "react";
+import {useContext, useRef, useState} from "react";
+import AuthContext from "../../store/auth-context";
 
 const AuthForm = (props) => {
     const [authType, setAuthType] = useState('login');
+    const emailInputRef = useRef();
+    const passwordInputRef = useRef();
+
+    const authCtx = useContext(AuthContext)
 
     const authTypeHandler = type => e => {
-        if (type === 'login') {
-            setAuthType('login');
-        } else if (type === 'register') {
-            setAuthType('register')
-        }
+        emailInputRef.current.value = '';
+        passwordInputRef.current.value = '';
+        setAuthType(type);
     }
 
     const loginHandler = (event, email, password) => {
@@ -20,9 +23,7 @@ const AuthForm = (props) => {
     const registerHandler = (event, email, password) => {
         event.preventDefault();
 
-        if (email.length === 0 || password.length === 0) {
-            return alert('Please enter a valid email and password.');
-        }
+
     }
 
     return (
@@ -43,14 +44,14 @@ const AuthForm = (props) => {
                             <svg className={styles.control__icon}>
                                 <use href="/sprite.svg#icon-user"></use>
                             </svg>
-                            <input className={styles.control__input} type="email" id="email" placeholder="Email"
+                            <input ref={emailInputRef} className={styles.control__input} type="email" id="email" placeholder="Email"
                                    required/>
                         </div>
                         <div className={styles.control}>
                             <svg className={styles.control__icon}>
                                 <use href="/sprite.svg#icon-key"></use>
                             </svg>
-                            <input className={styles.control__input} type="password" id="password"
+                            <input ref={passwordInputRef} className={styles.control__input} type="password" id="password"
                                    placeholder="Password" required/>
                         </div>
                         <div className={styles.actions}>
