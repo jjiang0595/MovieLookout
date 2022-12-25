@@ -3,7 +3,7 @@ import {useContext, useRef, useState} from "react";
 import AuthContext from "../../store/auth-context";
 
 const AuthForm = (props) => {
-    const [authType, setAuthType] = useState('login');
+    const [authType, setAuthType] = useState(true);
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
@@ -15,31 +15,31 @@ const AuthForm = (props) => {
         setAuthType(type);
     }
 
-    const loginHandler = (event, email, password) => {
+    const submitHandler = (event) => {
         event.preventDefault()
 
+        if(authType) {
+
+        } else {
+
+        }
+
     }
 
-    const registerHandler = (event, email, password) => {
-        event.preventDefault();
-
-
-    }
 
     return (
         <div className={styles.auth}>
             <div className={styles.auth__container}>
                 <div className={styles.authSelect}>
-                    <button className={(authType === 'login' ? styles.active : '')}
-                            onClick={authTypeHandler('login')}>Login
+                    <button className={(authType ? styles.active : '')}
+                            onClick={authTypeHandler(true)}>Login
                     </button>
-                    <button className={(authType === 'register' ? styles.active : '')}
-                            onClick={authTypeHandler('register')}>Register
+                    <button className={(!authType? styles.active : '')}
+                            onClick={authTypeHandler(false)}>Register
                     </button>
                 </div>
-                {authType === 'login' ?
-                    <form onSubmit={loginHandler} className={styles.form}>
-                        <p className={styles.form__title}>Login</p>
+                    <form onSubmit={submitHandler} className={styles.form}>
+                        <p className={styles.form__title}>{authType ? 'Login' : 'Register'}</p>
                         <div className={styles.control}>
                             <svg className={styles.control__icon}>
                                 <use href="/sprite.svg#icon-user"></use>
@@ -55,30 +55,10 @@ const AuthForm = (props) => {
                                    placeholder="Password" required/>
                         </div>
                         <div className={styles.actions}>
-                            <button className={styles.actions__button}>Login</button>
+                            <button className={styles.actions__button}>{authType ? 'Login' : 'Register'}</button>
                         </div>
                     </form>
-                    :
-                    <form onSubmit={registerHandler} className={styles.form}>
-                        <p className={styles.form__title}>Register</p>
-                        <div className={styles.control}>
-                            <svg className={styles.control__icon}>
-                                <use href="/sprite.svg#icon-user"></use>
-                            </svg>
-                            <input className={styles.control__input} type="email" id="email" placeholder="Email"
-                                   required/>
-                        </div>
-                        <div className={styles.control}>
-                            <svg className={styles.control__icon}>
-                                <use href="/sprite.svg#icon-key"></use>
-                            </svg>
-                            <input className={styles.control__input} type="password" id="password"
-                                   placeholder="Password" required/>
-                        </div>
-                        <div className={styles.actions}>
-                            <button className={styles.actions__button}>Register</button>
-                        </div>
-                    </form>}
+
             </div>
 
         </div>
