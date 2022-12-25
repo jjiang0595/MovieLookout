@@ -40,10 +40,18 @@ const AuthForm = (props) => {
                     <form onSubmit={loginHandler} className={styles.form}>
                         <p className={styles.form__title}>Login</p>
                         <div className={styles.control}>
-                            <input className={styles.control__input} type="email" id="email" placeholder="Email" required/>
+                            <svg className={styles.control__icon}>
+                                <use href="/sprite.svg#icon-user"></use>
+                            </svg>
+                            <input className={styles.control__input} type="email" id="email" placeholder="Email"
+                                   required/>
                         </div>
                         <div className={styles.control}>
-                            <input className={styles.control__input} type="password" id="password" placeholder="Password" required/>
+                            <svg className={styles.control__icon}>
+                                <use href="/sprite.svg#icon-key"></use>
+                            </svg>
+                            <input className={styles.control__input} type="password" id="password"
+                                   placeholder="Password" required/>
                         </div>
                         <div className={styles.actions}>
                             <button className={styles.actions__button}>Login</button>
@@ -53,10 +61,18 @@ const AuthForm = (props) => {
                     <form onSubmit={registerHandler} className={styles.form}>
                         <p className={styles.form__title}>Register</p>
                         <div className={styles.control}>
-                            <input className={styles.control__input} type="email" id="email" placeholder="Email" required/>
+                            <svg className={styles.control__icon}>
+                                <use href="/sprite.svg#icon-user"></use>
+                            </svg>
+                            <input className={styles.control__input} type="email" id="email" placeholder="Email"
+                                   required/>
                         </div>
                         <div className={styles.control}>
-                            <input className={styles.control__input} type="password" id="password" placeholder="Password" required/>
+                            <svg className={styles.control__icon}>
+                                <use href="/sprite.svg#icon-key"></use>
+                            </svg>
+                            <input className={styles.control__input} type="password" id="password"
+                                   placeholder="Password" required/>
                         </div>
                         <div className={styles.actions}>
                             <button className={styles.actions__button}>Register</button>
