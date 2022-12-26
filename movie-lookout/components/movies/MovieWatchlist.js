@@ -10,7 +10,7 @@ function MovieWatchlist(props) {
     return (
         <div className={styles.list}>
             <h1 className={styles.list__title}>Watchlist</h1>
-            {watchlist > 0 && context.watchlist.map(movie => (
+            {watchlist.length > 0 && context.watchlist.map(movie => (
                 <MovieItem key={movie.id} movie={movie}/>
             ))}
             {watchlist.length === 0 &&
