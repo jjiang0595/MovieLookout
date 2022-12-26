@@ -1,8 +1,10 @@
 import styles from './AuthForm.module.scss'
 import {useContext, useRef, useState} from "react";
 import AuthContext from "../../store/auth-context";
+import {useRouter} from "next/router";
 
 const AuthForm = (props) => {
+    const router = useRouter();
     const [authType, setAuthType] = useState(true);
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
@@ -37,12 +39,19 @@ const AuthForm = (props) => {
             }
         }).then(res => {
             if (res.ok) {
-
+                return res.json();
             } else {
-                res.json().then(data => {
-                    let errorMessage = 'Authentication failed!'
+                return res.json().then(data => {
+                    let errorMessage = 'Authentication failed!';
+                    throw new Error(errorMessage);
                 })
             }
+        }).then((data) => {
+            console.log(data.idToken)
+            authCtx.login(data.idToken)
+            router.replace('/')
+        }).catch((err) => {
+            alert(err.message)
         })
 
     }

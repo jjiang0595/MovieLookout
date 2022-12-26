@@ -132,6 +132,7 @@ table {
   display: flex;
   align-items: center;
   margin-right: 3rem;
+  z-index: 100;
 }
 .userNav > * {
   padding: 0 2rem;
