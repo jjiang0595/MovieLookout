@@ -4,7 +4,8 @@ import {useEffect, useState} from "react";
 import AuthContext from "../store/auth-context";
 import Layout from "../components/layout/Layout";
 
-const DUMMY_MEETUPS = [
+const DUMMY_MOVIES
+    = [
     {
         id: 'm1',
         title: 'Black Adam',
@@ -68,8 +69,30 @@ export default function Home(props) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <MovieList
-                movies={DUMMY_MEETUPS}
+                movies={props.movies}
             />
         </>
     )
+}
+
+export async function getStaticProps(props) {
+
+    const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_MOVIEDB_API_KEY}&language=en-US&page=1`);
+    const data = await res.json();
+    const movies = data.results;
+
+
+    return {
+        props: {
+            movies: movies.map(movie => ({
+                id: movie.id,
+                title: movie.original_title,
+                image: movie.poster_path,
+                description: movie.overview,
+
+
+            }))
+        },
+        revalidate: 1
+    }
 }

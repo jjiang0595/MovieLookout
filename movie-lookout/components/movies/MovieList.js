@@ -12,7 +12,7 @@ function MovieList(props) {
                             key={movie.id}
                             id={movie.id}
                             title={movie.title}
-                            image={movie.image}
+                            image={`http://image.tmdb.org/t/p/w500/${movie.image}`}
                             description={movie.description}
                         />
                     ))}
