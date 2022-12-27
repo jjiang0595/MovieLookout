@@ -2,32 +2,29 @@
   transition: all 0.2s;
   cursor: pointer;
 }
-.movieItem:hover {
-  transform: scale(1.03);
-  border-radius: 6px;
-  box-shadow: -3px -2px 32px 0px rgba(0, 0, 0, 0.29);
-}
-
-.image {
+.movieItem__image {
   overflow: hidden;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
-}
-.image img {
   width: 18rem;
   height: 25.8rem;
   object-fit: cover;
 }
-
-.content {
+.movieItem__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1.25rem 0.5rem 1.25rem;
   text-align: center;
-  padding: 1rem;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
-}
-.content h3 {
   font-size: 1.25rem;
   color: #2c292b;
+}
+.movieItem:hover {
+  transform: scale(1.03);
+  border-radius: 6px;
+  box-shadow: -3px -2px 32px 0px rgba(0, 0, 0, 0.29);
 }
 
 /*# sourceMappingURL=MovieItem.module.css.map */

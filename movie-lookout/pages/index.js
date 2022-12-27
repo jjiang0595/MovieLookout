@@ -81,7 +81,6 @@ export async function getStaticProps(props) {
     const data = await res.json();
     const movies = data.results;
 
-
     return {
         props: {
             movies: movies.map(movie => ({
@@ -93,6 +92,6 @@ export async function getStaticProps(props) {
 
             }))
         },
-        revalidate: 1
+        revalidate: 30
     }
 }
