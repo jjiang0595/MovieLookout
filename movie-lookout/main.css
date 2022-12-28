@@ -85,48 +85,6 @@ table {
   margin-left: 3rem;
 }
 
-.search {
-  flex: 0 0 40%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.search__input {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  background-color: #f4f2f2;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 100px;
-  width: 90%;
-  transition: all 0.2s ease;
-  margin-right: -3.25rem;
-}
-.search__input:focus {
-  outline: none;
-  width: 100%;
-}
-.search__input::-webkit-input-placeholder {
-  font-weight: 100;
-  color: #999;
-}
-.search__button {
-  border: none;
-  background-color: #f4f2f2;
-}
-.search__button:focus {
-  outline: none;
-}
-.search__button:active {
-  transform: translateY(2px);
-}
-.search__icon {
-  height: 2rem;
-  width: 2rem;
-  fill: #999;
-}
-
 .userNav {
   align-self: stretch;
   display: flex;

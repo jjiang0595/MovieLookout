@@ -2,6 +2,7 @@ import styles from './MainNavigation.module.scss';
 import {useState, useContext} from "react";
 import Link from "next/link";
 import AuthContext from "../../store/auth-context";
+import Searchbar from "./Searchbar";
 
 function MainNavigation() {
     const authCtx = useContext(AuthContext);
@@ -16,14 +17,7 @@ function MainNavigation() {
             <Link href={'/'}>
                 <img src="/MovieLookoutLogo.png" alt="movie logo" className={styles.logo}/>
             </Link>
-            <form action="#" className={styles.search}>
-                <input type="text" className={styles.search__input} placeholder="Search for a movie"/>
-                <button className={styles.search__button}>
-                    <svg className={styles.search__icon}>
-                        <use href="/sprite.svg#icon-search"></use>
-                    </svg>
-                </button>
-            </form>
+            <Searchbar />
             <nav className={styles.userNav}>
                 {/*DISPLAY WATCHLIST ONLY WHEN LOGGED IN*/}
                 <Link href="/watchlist" className={styles.userNav__iconBox}>
