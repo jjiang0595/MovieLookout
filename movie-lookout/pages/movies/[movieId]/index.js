@@ -20,7 +20,12 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            movieData: data
+            movieData: {
+                title: data.title,
+                overview: data.overview,
+                backdrop: data.backdrop_path,
+                image: data.poster_path
+            }
         }
     }
 
