@@ -1,15 +1,38 @@
 .movie {
-  background-image:
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__content {
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.5));
+    padding: 3rem 3rem;
+    display: flex;
+    flex-wrap: nowrap;
+  }
 
   &__image {
-
+    border-radius: 1rem;
+    width: 30rem;
   }
 
-  &__title {
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 3rem;
+    padding-right: 3rem;
 
-  }
+    &__title {
+      color: white;
+      margin-bottom: 3rem;
+      font-weight: 700;
 
-  &__overview {
+    }
 
+    &__overview {
+      color: white;
+
+    }
   }
 }

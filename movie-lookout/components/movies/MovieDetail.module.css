@@ -1,5 +1,33 @@
 .movie {
-  background-image: .movie __image;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.movie__content {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  padding: 3rem 3rem;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.movie__image {
+  border-radius: 1rem;
+  width: 30rem;
+}
+.movie__header {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.movie__header__title {
+  color: white;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+.movie__header__overview {
+  color: white;
 }
 
 /*# sourceMappingURL=MovieDetail.module.css.map */
