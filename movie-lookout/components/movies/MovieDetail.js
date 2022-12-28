@@ -1,6 +1,7 @@
 const MovieDetail = (props) => {
+    console.log(props.movieData.title);
     return (
-        <span></span>
+        <span>{props.movieData.title}</span>
     )
 }
 

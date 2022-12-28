@@ -7,14 +7,14 @@ function MovieItem(props) {
         <Link href={{
             pathname: `/${props.id}`,
             query: {
-                key: `${props.id}`,
-                id: props.id,
+                key: props.id,
+                movieId: props.id,
                 title: `${props.title}`,
                 image: `http://image.tmdb.org/t/p/w500/${props.image}`,
                 description: props.description
             }
         }}
-              as={`/${props.id}`}
+              as={`/movies/${props.id}`}
               className={styles.movieItem}>
             <img className={styles.movieItem__image} src={props.image} alt={props.title}/>
             <span className={styles.movieItem__content}>{props.title}</span>
