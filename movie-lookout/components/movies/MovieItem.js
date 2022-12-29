@@ -1,5 +1,4 @@
 import styles from './MovieItem.module.scss';
-import Card from '../ui/Card';
 import Link from "next/link";
 
 function MovieItem(props) {
