@@ -5,6 +5,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  border-radius: 100%;
+  position: relative;
+  z-index: 100;
 
   &__input {
     font-family: inherit;
@@ -23,10 +26,21 @@
       width: 100%;
     }
 
+    &:focus ~ .search__results {
+      outline: none;
+      width: 100%;
+    }
+
     &::-webkit-input-placeholder {
       font-weight: 100;
       color: #999;
     }
+
+    &__bottom {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
   }
 
   &__button {
@@ -48,13 +62,44 @@
     fill: #999;
   }
 
+
+  // SEARCH RESULTS
   &__results {
+    position: absolute;
+    top: 100%;
+    width: 90%;
+    background-color: #f4f2f2;
+    overflow: hidden;
+    transition: all .2s ease;
 
     &__item {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      flex-direction: column;
+      border-bottom: 1px solid #ccc;
+      text-decoration: none;
 
       &__title {
+        font-size: 1.4rem;
+        font-weight: 300;
+        color: #999;
+        margin-bottom: .5rem;
+      }
 
+      &:hover > &__title{
+        color: #000000;
       }
     }
   }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.01);
+  z-index: -1;
 }

@@ -32,8 +32,6 @@ export async function getStaticProps(props) {
                 title: movie.original_title,
                 image: movie.poster_path,
                 description: movie.overview,
-
-
             }))
         },
         revalidate: 30
