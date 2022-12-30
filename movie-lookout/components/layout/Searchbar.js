@@ -33,6 +33,7 @@ const Searchbar = (props) => {
 
     const deleteSearchTerm = () => {
         setSearchResults([]);
+        setShowResults(false);
     }
 
     const submitHandler = (event) => {
@@ -52,7 +53,7 @@ const Searchbar = (props) => {
                 </svg>
             </button>
             <div className={styles.search__results}>
-                {searchResults && searchResults.map((movie) => (
+                {showResults && searchResults.map((movie) => (
                     <Link href={{
                         pathname: `/movies/${movie.movieId}`,
                         query: {
