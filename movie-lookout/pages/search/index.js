@@ -3,7 +3,7 @@ import MovieList from "../../components/movies/MovieList";
 
 const SearchResults = (props) => {
     const router = useRouter();
-    const {query} = router.query;
+    const query = router.query.query;
 
     return (
         <div>
@@ -13,9 +13,9 @@ const SearchResults = (props) => {
     );
 }
 
-export async function getStaticProps(context) {
-    const query = context.params.query;
-    const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_MOVIEDB_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`);
+export async function getServerSideProps({query}) {
+    const searchQuery = query.query;
+    const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_MOVIEDB_API_KEY}&language=en-US&query=${searchQuery}&page=1&include_adult=false`);
     const data = await res.json();
     const movies = data.results;
 
@@ -28,7 +28,6 @@ export async function getStaticProps(context) {
                 description: movie.overview,
             }))
         },
-        revalidate: 30
     }
 }
 export default SearchResults;

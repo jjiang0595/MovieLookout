@@ -38,8 +38,15 @@ const Searchbar = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        router.push(`/search?searchTerm=${query}`);
+        setShowResults(false);
 
+        router.push({
+            pathname: '/search',
+            search: `?query=${query.current.value}`,
+            query: {
+                query: query.current.value
+            }
+        })
     }
 
     return (
