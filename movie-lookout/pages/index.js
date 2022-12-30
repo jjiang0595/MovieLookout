@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head';
 import MovieList from "../components/movies/MovieList";
 
 export default function Home(props) {
@@ -29,7 +29,7 @@ export async function getStaticProps(props) {
         props: {
             movies: movies.map(movie => ({
                 id: movie.id,
-                title: movie.original_title,
+                title: movie.title,
                 image: movie.poster_path,
                 description: movie.overview,
             }))

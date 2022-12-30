@@ -1,16 +1,19 @@
 import styles from './Searchbar.module.scss';
-import {useState} from "react";
+import {useRef, useState} from "react";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 const Searchbar = (props) => {
-    const [searchTerm, setSearchTerm] = useState('');
+    const query = useRef(null);
     const [searchResults, setSearchResults] = useState([]);
+    const [showResults, setShowResults] = useState(false);
+    const router = useRouter();
 
     const searchHandler = async (event) => {
         const query = event.target.value;
-        setSearchTerm(query);
 
         if (query.length > 2) {
+            setShowResults(true)
             const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_MOVIEDB_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`;
             const res = await fetch(url);
             const data = await res.json();
@@ -23,19 +26,25 @@ const Searchbar = (props) => {
 
             setSearchResults(filteredMovies);
         } else {
+            setShowResults(false);
             setSearchResults([]);
         }
     }
 
     const deleteSearchTerm = () => {
-        setSearchTerm('');
         setSearchResults([]);
     }
 
+    const submitHandler = (event) => {
+        event.preventDefault();
+        router.push(`/search?searchTerm=${query}`);
+
+    }
+
     return (
-        <form action="#" className={styles.search}>
-            <input type="text" onChange={searchHandler}
-                   className={`${styles.search__input} ${searchTerm.length > 2 ? styles.search__input__bottom : ''}`}
+        <form action="#" className={styles.search} onSubmit={submitHandler}>
+            <input type="text" ref={query} onChange={searchHandler}
+                   className={`${styles.search__input} ${showResults ? styles.search__input__bottom : ''}`}
                    placeholder="Search for a movie..."/>
             <button className={styles.search__button}>
                 <svg className={styles.search__icon}>
@@ -56,10 +65,10 @@ const Searchbar = (props) => {
                         <span className={styles.search__results__item__title}>{movie.title}</span>
                     </Link>
                 ))}
-                {searchResults.length === 0 && searchTerm.length > 2 &&
+                {searchResults.length === 0 && showResults &&
                     <p className={styles.search__results__item}>No results found</p>}
             </div>
-            {searchTerm.length > 2 ? <div className={styles.overlay} onClick={deleteSearchTerm} /> : null}
+            {showResults ? <div className={styles.overlay} onClick={deleteSearchTerm} /> : null}
         </form>
     )
 }
