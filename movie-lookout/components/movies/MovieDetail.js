@@ -5,7 +5,7 @@ const MovieDetail = (props) => {
         <div className={styles.movie}
              style={{backgroundImage: `url(http://image.tmdb.org/t/p/w500/${props.movieData.backdrop})`}}>
             <div className={styles.movie__content}>
-                <img className={styles.movie__image} src={`http://image.tmdb.org/t/p/w500/${props.movieData.image}`}
+                <img className={styles.movie__image} src={props.movieData.image ? `http://image.tmdb.org/t/p/w500/${props.movieData.image}` : '/No-Image-Placeholder.svg'}
                      alt={props.movieData.title}/>
                 <div className={styles.movie__header}>
                     <span className={styles.movie__header__title}>{props.movieData.title}</span>

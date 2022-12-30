@@ -30,7 +30,7 @@ export async function getStaticProps(props) {
             movies: movies.map(movie => ({
                 id: movie.id,
                 title: movie.title,
-                image: movie.poster_path,
+                image:  movie.poster_path,
                 description: movie.overview,
             }))
         },
