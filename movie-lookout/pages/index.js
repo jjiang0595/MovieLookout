@@ -13,7 +13,7 @@ export default function Home(props) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <MovieList
-                movies={props.movies}
+                movies={props.movies} header="Trending Movies"
             />
         </>
     )

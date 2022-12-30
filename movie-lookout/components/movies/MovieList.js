@@ -5,7 +5,7 @@ function MovieList(props) {
     return (
         <div className={styles.list}>
             <list>
-                <h1 className={styles.list__trending}>Trending</h1>
+                <h1 className={styles.list__trending}>{props.header}</h1>
                 <ul className={styles.list__movies}>
                     {props.movies.map((movie) => (
                         <MovieItem

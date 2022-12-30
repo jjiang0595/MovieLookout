@@ -44,7 +44,8 @@ const Searchbar = (props) => {
             pathname: '/search',
             search: `?query=${query.current.value}`,
             query: {
-                query: query.current.value
+                query: query.current.value,
+                title: 'Search Results'
             }
         })
     }

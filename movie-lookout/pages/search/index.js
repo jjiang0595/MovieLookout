@@ -4,13 +4,9 @@ import MovieList from "../../components/movies/MovieList";
 const SearchResults = (props) => {
     const router = useRouter();
     const query = router.query.query;
+    const header = query ? `Search Results for ${query}` : 'Search Results';
 
-    return (
-        <div>
-            <h1>Search Results for {query}</h1>
-            <MovieList movies={props.movies} />
-        </div>
-    );
+    return <MovieList movies={props.movies} header={header} />
 }
 
 export async function getServerSideProps({query}) {
