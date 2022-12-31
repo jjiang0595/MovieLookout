@@ -5,6 +5,7 @@
   padding-bottom: 5rem;
 }
 .list__trending {
+  margin-left: 9rem;
   align-self: flex-start;
   font-family: "Montserrat", sans-serif;
   font-size: 3rem;

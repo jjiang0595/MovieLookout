@@ -7,10 +7,6 @@ function MovieItem(props) {
             pathname: `/${props.id}`,
             query: {
                 key: props.id,
-                movieId: props.id,
-                title: `${props.title}`,
-                image: `http://image.tmdb.org/t/p/w500/${props.image}`,
-                description: props.description
             }
         }}
               as={`/movies/${props.id}`}

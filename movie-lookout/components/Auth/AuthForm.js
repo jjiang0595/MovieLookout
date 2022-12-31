@@ -48,7 +48,7 @@ const AuthForm = (props) => {
             }
         }).then((data) => {
             console.log(data.idToken)
-            authCtx.login(data.idToken)
+            authCtx.login(data.idToken, Date.now() + data.expiresIn * 1000)
             router.replace('/')
         }).catch((err) => {
             alert(err.message)
