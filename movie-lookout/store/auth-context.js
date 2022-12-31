@@ -32,9 +32,9 @@ export const AuthContextProvider = (props) => {
         });
     }
 
-    const removeFromWatchlist = (movie) => {
+    const removeFromWatchlist = (removedMovie) => {
         setWatchlist(prevWatchlist => {
-            return prevWatchlist.filter(movie => movie.id !== movie.id);
+            return prevWatchlist.filter(movie => movie.id !== removedMovie.id);
         });
     }
 

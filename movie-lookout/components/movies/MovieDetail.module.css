@@ -21,13 +21,64 @@
   padding-left: 3rem;
   padding-right: 3rem;
 }
+.movie__header > * {
+  margin-bottom: 1rem;
+}
 .movie__header__title {
   color: white;
-  margin-bottom: 3rem;
   font-weight: 700;
 }
 .movie__header__overview {
   color: white;
+}
+.movie__header__button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5rem;
+  background: linear-gradient(to left, #FFE3E1 50%, #FF9494 50%);
+  background-size: 200% 100%;
+  transition: 0.5s ease-out;
+}
+.movie__header__button__l {
+  background-position: right;
+}
+.movie__header__button__r {
+  background-position: left;
+}
+.movie__header__button__heart {
+  fill: red;
+  height: 2rem;
+  width: 2rem;
+  margin-left: 1rem;
+  z-index: 10;
+}
+.movie__header__button__text {
+  cursor: pointer;
+  border: none;
+  padding: 1rem 2rem 1rem 4rem;
+  margin-left: -3rem;
+  font-weight: 550;
+}
+
+.pulsate {
+  animation: pulsate 1.25s ease-out infinite;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=MovieDetail.module.css.map */
