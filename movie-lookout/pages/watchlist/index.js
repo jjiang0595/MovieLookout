@@ -8,7 +8,8 @@ const Watchlist = () => {
     const isLoggedIn = authCtx.isLoggedIn;
 
     if (isLoggedIn) {
-        return <MovieWatchlist />;
+        return <MovieWatchlist />
+
     } else {
         router.push({
             pathname: '/login',

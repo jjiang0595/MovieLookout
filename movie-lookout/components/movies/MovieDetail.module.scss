@@ -29,6 +29,7 @@
 
     &__title {
       color: white;
+      font-size: 3rem;
       font-weight: 700;
     }
 
@@ -40,11 +41,12 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+      width: 22rem;
       cursor: pointer;
       border-radius: 5rem;
       background: linear-gradient(to left, #FFE3E1 50%, #FF9494 50%);
       background-size: 200% 100%;
-      transition: .5s ease-out;
+      margin-top: 1.5rem;
 
       &__l {
         background-position: right;
@@ -62,10 +64,17 @@
         z-index: 10;
       }
 
+      &__chevron {
+        height: 2rem;
+        width: 2rem;
+        margin-left: 1.85rem;
+        animation: slide 1s ease-in-out infinite;
+      }
+
       &__text {
         cursor: pointer;
         border: none;
-        padding: 1rem 2rem 1rem 4rem;
+        padding: .65rem 1.5rem .65rem 4rem;
         margin-left: -3rem;
         font-weight: 550;
       }
@@ -73,21 +82,16 @@
   }
 }
 
-.pulsate {
-  animation: pulsate 1.25s ease-out infinite;
-}
-
-@keyframes pulsate {
+@keyframes slide {
   0% {
-    transform: scale(1);
-    opacity: 1;
+    transform: translateX(0);
   }
   50% {
-    transform: scale(1.5);
-    opacity: 0.75;
+    transform: translateX(-25%);
   }
   100% {
-    transform: scale(1);
-    opacity: 1;
+    transform: translateX(0);
   }
 }
+
+

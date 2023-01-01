@@ -3,7 +3,7 @@ import {useContext} from "react";
 import AuthContext from "../../store/auth-context";
 import MovieListBar from "./MovieListBar";
 
-function MovieWatchlist(props) {
+function MovieWatchlist() {
     const authCtx = useContext(AuthContext);
     const watchlist = authCtx.isLoggedIn ? authCtx.watchlist : [];
 
@@ -11,8 +11,9 @@ function MovieWatchlist(props) {
         <div className={styles.list}>
             <h1 className={styles.list__title}>Watchlist</h1>
             {watchlist.length > 0 && authCtx.watchlist.map(movie => (
-                <MovieListBar movie={movie.movieData} />
+                <MovieListBar movie={movie} />
             ))}
+
             {watchlist.length === 0 &&
                 <div className={styles.list__empty}>
                     <span className={styles.list__empty__text}>Your watchlist is empty.</span>
