@@ -2,6 +2,7 @@ import Head from 'next/head';
 import MovieList from "../components/movies/MovieList";
 
 export default function Home(props) {
+
     return (
         <>
             <Head>

@@ -19,8 +19,8 @@ const MovieDetail = (props) => {
         setFavorite(true);
         authCtx.addToList({
             id: props.movieData.id,
-            backdrop: props.movieData.backdrop,
-            title: props.movieData.title,
+            image: props.movieData.image,
+            overview: props.movieData.overview,
         });
             console.log(authCtx.watchlist)
     }

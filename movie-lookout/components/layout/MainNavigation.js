@@ -24,7 +24,7 @@ function MainNavigation() {
                     <svg className={styles.userNav__icon}>
                         <use href="/sprite.svg#icon-bookmarks"></use>
                     </svg>
-                    <span className={styles.userNav__notification}>0</span>
+                    <span className={styles.userNav__notification}>{authCtx.watchlist.length}</span>
                     <span><b>Watch List</b></span>
                 </Link>
                 <div className={`${styles.userNav__iconBox_user} ${isOpen ? styles.active : ''}`}
@@ -33,6 +33,10 @@ function MainNavigation() {
                         <use href="/sprite.svg#icon-user"></use>
                     </svg>
                     <span><b>Guest</b></span>
+
+                    {/*IMPLEMENT HOVER INSTEAD OF CLICK FOR BETTER UX*/}
+                    {/*IMPLEMENT HOVER INSTEAD OF CLICK FOR BETTER UX*/}
+                    {/*IMPLEMENT HOVER INSTEAD OF CLICK FOR BETTER UX*/}
                     {authCtx.isLoggedIn && isOpen && <div className={styles.userNav__dropdown}>
                         <Link href="/" className={styles.userNav__dropdown__a} onClick={authCtx.logout}>Logout</Link>
                     </div>}

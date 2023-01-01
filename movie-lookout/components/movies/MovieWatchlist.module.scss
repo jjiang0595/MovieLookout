@@ -4,26 +4,45 @@
   align-items: center;
   justify-content: center;
   list-style: none;
+  margin-left: 9rem;
+  margin-right: 9rem;
+  padding-bottom: 5rem;
 
-    &__title {
-      font-weight: 700;
-      font-size: 6rem;
-        margin-bottom: 3rem;
+  &__title {
+    font-weight: 700;
+    font-size: 6rem;
+    margin-bottom: 3rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+
+    &__poster {
+      height: 20rem;
+      width: 15rem;
+      margin-right: 3rem;
     }
 
-    &__empty {
-      &__text {
-        font-weight: 500;
-        font-size: 3rem;
-      }
+    &__overview {
 
-        & > * {
-          display: flex;
-          justify-content: center;
-          margin: 3rem;
-          text-decoration: none;
-
-        }
     }
+  }
+
+  &__empty {
+    &__text {
+      font-weight: 500;
+      font-size: 3rem;
+    }
+
+    & > * {
+      display: flex;
+      justify-content: center;
+      margin: 3rem;
+      text-decoration: none;
+
+    }
+  }
 
 }

@@ -4,11 +4,24 @@
   align-items: center;
   justify-content: center;
   list-style: none;
+  margin-left: 9rem;
+  margin-right: 9rem;
+  padding-bottom: 5rem;
 }
 .list__title {
   font-weight: 700;
   font-size: 6rem;
   margin-bottom: 3rem;
+}
+.list__item {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+}
+.list__item__poster {
+  height: 20rem;
+  width: 15rem;
+  margin-right: 3rem;
 }
 .list__empty__text {
   font-weight: 500;
