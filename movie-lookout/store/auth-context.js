@@ -17,7 +17,6 @@ const AuthContext = React.createContext({
 export const AuthContextProvider = (props) => {
     const [user, setUser] = useState(null);
     const [watchlist, setWatchlist] = useState([]);
-    const auth = getAuth();
 
     useEffect(() => {
         return(onIdTokenChanged(auth, (user) => {
@@ -37,7 +36,6 @@ export const AuthContextProvider = (props) => {
 
     const logoutHandler = useCallback(() => {
         setUser(null)
-        clearTimeout(logoutTimer)
     }, [])
 
     const addToWatchlist = (movie) => {

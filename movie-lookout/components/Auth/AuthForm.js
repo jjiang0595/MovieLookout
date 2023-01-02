@@ -3,14 +3,14 @@ import {useContext, useRef, useState} from "react";
 import AuthContext from "../../store/auth-context";
 import {useRouter} from "next/router";
 import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
-
+import {getDatabase} from "firebase/database";
+import {auth, db} from "../../store/firebaseConfig";
 
 const AuthForm = (props) => {
     const router = useRouter();
     const [authType, setAuthType] = useState(true);
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
-    const auth = getAuth();
 
     const authCtx = useContext(AuthContext)
 
@@ -21,7 +21,7 @@ const AuthForm = (props) => {
     }
 
     const submitHandler = (event) => {
-        console.log(process.env.NEXT_PUBLIC_API_KEY)
+        console.log(db)
         event.preventDefault()
 
         let url;
@@ -54,7 +54,9 @@ const AuthForm = (props) => {
                 .then(() => {
                     return signInWithEmailAndPassword(auth, emailInputRef.current.value, passwordInputRef.current.value);
                 })
-            authCtx.login(data.idToken, Date.now() + data.expiresIn * 1000)
+
+            authCtx.login(data.idToken)
+
             router.replace('/')
         }).catch((err) => {
             alert(err.message)
