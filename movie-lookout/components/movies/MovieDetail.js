@@ -1,6 +1,8 @@
 import styles from './MovieDetail.module.scss';
 import AuthContext from "../../store/auth-context";
 import {useContext, useEffect, useState} from "react";
+import {db} from "../../store/firebaseConfig";
+import {set, ref} from "firebase/database";
 
 const MovieDetail = (props) => {
     const authCtx = useContext(AuthContext);
@@ -14,7 +16,7 @@ const MovieDetail = (props) => {
         }
     }, [authCtx.isLoggedIn]);
 
-    const addToListHandler = () => {
+    const addToListHandler = async () => {
         setTransition(true);
         setFavorite(true);
         authCtx.addToList({
@@ -22,7 +24,12 @@ const MovieDetail = (props) => {
             image: props.movieData.image,
             overview: props.movieData.overview,
         });
-            console.log(authCtx.watchlist)
+        await set(ref(db, `users/${authCtx.user.uid}/watchlist/${props.movieData.id}`), {
+            id: props.movieData.id,
+            image: props.movieData.image,
+            overview: props.movieData.overview,
+        })
+
     }
 
     const removeFromListHandler = () => {

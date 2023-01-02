@@ -1,10 +1,23 @@
 import styles from './MovieWatchlist.module.scss';
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import AuthContext from "../../store/auth-context";
+import {db} from "../../store/firebaseConfig";
+import {onValue, ref} from "firebase/database";
 
 function MovieWatchlist() {
     const authCtx = useContext(AuthContext);
-    const watchlist = authCtx.isLoggedIn ? authCtx.watchlist : [];
+    const [watchlist, setWatchlist] = authCtx.isLoggedIn ? useState([]) : [];
+    const watchlistRef = ref(db, `users/${authCtx.user.uid}/watchlist`);
+
+    useEffect(() => {
+    onValue(watchlistRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data)
+        // WORKS, BUT NEEDS TO BE REFACTORED
+        // REPLACE ALL authCtx.watchlist with this new way of getting the watchlist
+    });
+    }, []);
+
 
     return (
         <div className={styles.list}>

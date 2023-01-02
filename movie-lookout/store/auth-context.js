@@ -36,6 +36,7 @@ export const AuthContextProvider = (props) => {
 
     const logoutHandler = useCallback(() => {
         setUser(null)
+        clearTimeout(logoutTimer)
     }, [])
 
     const addToWatchlist = (movie) => {
