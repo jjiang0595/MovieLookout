@@ -1,5 +1,5 @@
 import styles from './AuthForm.module.scss'
-import {useContext, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import AuthContext from "../../store/auth-context";
 import {useRouter} from "next/router";
 import {getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence, onAuthStateChanged} from "firebase/auth";
@@ -13,6 +13,10 @@ const AuthForm = (props) => {
     const passwordInputRef = useRef();
 
     const authCtx = useContext(AuthContext)
+
+    if (authCtx.isLoggedIn) {
+        router.replace('/');
+    }
 
     const authTypeHandler = type => e => {
         emailInputRef.current.value = '';

@@ -12,9 +12,17 @@ function MovieWatchlist() {
     useEffect(() => {
     onValue(watchlistRef, (snapshot) => {
         const data = snapshot.val();
-        console.log(data)
-        // WORKS, BUT NEEDS TO BE REFACTORED
-        // REPLACE ALL authCtx.watchlist with this new way of getting the watchlist
+        const watchlist = [];
+        for (const key in data) {
+            const movie = {
+                id: data[key].id,
+                image: data[key].image,
+                overview: data[key].overview,
+            }
+            watchlist.push(movie);
+        }
+        setWatchlist(watchlist);
+        console.log(watchlist);
     });
     }, []);
 
@@ -22,8 +30,8 @@ function MovieWatchlist() {
     return (
         <div className={styles.list}>
             <h1 className={styles.list__title}>Watchlist</h1>
-            {watchlist.length > 0 && authCtx.watchlist.map(movie => (
-                <div className={styles.list__item}>
+            {watchlist.length > 0 && watchlist.map(movie => (
+                <div className={styles.list__item} id={movie.id}>
                     <img className={styles.list__item__poster} src={`http://image.tmdb.org/t/p/w500/${movie.image}`}/>
                     <span className={styles.list__item__overview}>{movie.overview}</span>
                 </div>

@@ -19,11 +19,6 @@ const MovieDetail = (props) => {
     const addToListHandler = async () => {
         setTransition(true);
         setFavorite(true);
-        authCtx.addToList({
-            id: props.movieData.id,
-            image: props.movieData.image,
-            overview: props.movieData.overview,
-        });
         await set(ref(db, `users/${authCtx.user.uid}/watchlist/${props.movieData.id}`), {
             id: props.movieData.id,
             image: props.movieData.image,

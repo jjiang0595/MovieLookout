@@ -1,23 +1,28 @@
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import MovieWatchlist from "../../components/movies/MovieWatchlist";
 import AuthContext from "../../store/auth-context";
-import {router} from "next/client";
+import {useRouter} from "next/router";
 
 const Watchlist = () => {
     const authCtx = useContext(AuthContext);
     const isLoggedIn = authCtx.isLoggedIn;
+    const router = useRouter();
 
     if (isLoggedIn) {
-        return <MovieWatchlist />
+        return <MovieWatchlist/>
 
-    } else {
-        router.push({
-            pathname: '/login',
-            query: {
-                message: 'You must be logged in to view your watchlist.'
-            }
-        });
     }
+
+    useEffect( () => {
+        if (!isLoggedIn) {
+            router.push({
+                pathname: '/login',
+                query: {
+                    message: 'You must be logged in to view your watchlist.'
+                }
+            });
+        }
+    }, [isLoggedIn]);
 }
 
 export default Watchlist;
