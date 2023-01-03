@@ -44,9 +44,17 @@
       width: 22rem;
       cursor: pointer;
       border-radius: 5rem;
+      border: 1px solid black;
       background: linear-gradient(to left, #FFE3E1 50%, #FF9494 50%);
       background-size: 200% 100%;
       margin-top: 1.5rem;
+
+      &:disabled, &[disabled] {
+        border: 1px solid black;
+        background-color: transparent;
+        color: black;
+        pointer-events: none;
+      }
 
       &__l {
         background-position: right;

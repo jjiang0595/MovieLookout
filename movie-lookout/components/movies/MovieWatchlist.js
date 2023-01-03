@@ -10,20 +10,19 @@ function MovieWatchlist() {
     const watchlistRef = ref(db, `users/${authCtx.user.uid}/watchlist`);
 
     useEffect(() => {
-    onValue(watchlistRef, (snapshot) => {
-        const data = snapshot.val();
-        const watchlist = [];
-        for (const key in data) {
-            const movie = {
-                id: data[key].id,
-                image: data[key].image,
-                overview: data[key].overview,
+        onValue(watchlistRef, (snapshot) => {
+            const data = snapshot.val();
+            const watchlist = [];
+            for (const key in data) {
+                const movie = {
+                    id: data[key].id,
+                    image: data[key].image,
+                    overview: data[key].overview,
+                }
+                watchlist.push(movie);
             }
-            watchlist.push(movie);
-        }
-        setWatchlist(watchlist);
-        console.log(watchlist);
-    });
+            setWatchlist(watchlist);
+        });
     }, []);
 
 
@@ -31,7 +30,7 @@ function MovieWatchlist() {
         <div className={styles.list}>
             <h1 className={styles.list__title}>Watchlist</h1>
             {watchlist.length > 0 && watchlist.map(movie => (
-                <div className={styles.list__item} id={movie.id}>
+                <div className={styles.list__item} key={movie.id}>
                     <img className={styles.list__item__poster} src={`http://image.tmdb.org/t/p/w500/${movie.image}`}/>
                     <span className={styles.list__item__overview}>{movie.overview}</span>
                 </div>

@@ -12,17 +12,6 @@ const Watchlist = () => {
         return <MovieWatchlist/>
 
     }
-
-    useEffect( () => {
-        if (!isLoggedIn) {
-            router.push({
-                pathname: '/login',
-                query: {
-                    message: 'You must be logged in to view your watchlist.'
-                }
-            });
-        }
-    }, [isLoggedIn]);
 }
 
 export default Watchlist;

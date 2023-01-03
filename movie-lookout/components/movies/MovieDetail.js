@@ -1,22 +1,32 @@
 import styles from './MovieDetail.module.scss';
 import AuthContext from "../../store/auth-context";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useMemo, useState} from "react";
 import {db} from "../../store/firebaseConfig";
-import {set, ref} from "firebase/database";
+import {set, ref, remove, onValue} from "firebase/database";
 
 const MovieDetail = (props) => {
     const authCtx = useContext(AuthContext);
-    const [favorite, setFavorite] = useState(false);
+    const [favorite, setFavorite] = useState(null);
     const [transition, setTransition] = useState(false);
+    const [disabled, setDisabled] = useState(false);
 
-    useEffect(() => {
+    useMemo(() => {
         if (authCtx.isLoggedIn) {
-            const isFavorite = authCtx.watchlist.find(movie => movie.id === props.movieData.id);
-            setFavorite(isFavorite);
+            const watchlistRef = ref(db, `users/${authCtx.user.uid}/watchlist`);
+            onValue(watchlistRef, (snapshot) => {
+                const data = snapshot.val();
+                for (const key in data) {
+                    if (data[key].id === props.movieData.id) {
+                        setFavorite(true);
+                    }
+                }
+            })
         }
     }, [authCtx.isLoggedIn]);
 
     const addToListHandler = async () => {
+        setDisabled(true);
+
         setTransition(true);
         setFavorite(true);
         await set(ref(db, `users/${authCtx.user.uid}/watchlist/${props.movieData.id}`), {
@@ -24,14 +34,23 @@ const MovieDetail = (props) => {
             image: props.movieData.image,
             overview: props.movieData.overview,
         })
+        setDisabled(true);
+        console.log("CLICKED")
 
+        setTimeout(() => {
+            setDisabled(false);
+        }, 500)
     }
 
-    const removeFromListHandler = () => {
+    const removeFromListHandler = async () => {
+        setDisabled(true);
         setTransition(true);
         setFavorite(false);
-        authCtx.removeFromList(props.movieData.id);
-        console.log(authCtx.watchlist)
+        await remove(ref(db, `users/${authCtx.user.uid}/watchlist/${props.movieData.id}`))
+        console.log("CLICKED")
+        setTimeout(() => {
+            setDisabled(false);
+        }, 500)
     }
 
     return (
@@ -44,11 +63,16 @@ const MovieDetail = (props) => {
                 <div className={styles.movie__header}>
                     <span className={styles.movie__header__title}>{props.movieData.title}</span>
                     {authCtx.isLoggedIn &&
-                        <button onClick={!favorite ? addToListHandler : removeFromListHandler} style={{transition: transition ? 'all 0.4s ease-out' : 'none'}}
-                                className={`${styles.movie__header__button} ${!favorite ? styles.movie__header__button__l : styles.movie__header__button__r}`}>
+                        <button onClick={!favorite ? addToListHandler : removeFromListHandler}
+                                style={{transition: transition ? 'all 0.4s ease-out' : 'none'}}
+                                className={`${styles.movie__header__button} ${!favorite ? styles.movie__header__button__l : styles.movie__header__button__r}`}
+                                disabled={disabled}>
                             <svg className={`${styles.movie__header__button__heart}`}>
-                                {!favorite ? <use href="/sprite.svg#icon-heart"/> :
-                                    <use href="/sprite.svg#icon-heart-broken"/>}
+                                {!favorite ?
+                                    <use href="/sprite.svg#icon-heart"/>
+                                    :
+                                    <use href="/sprite.svg#icon-heart-broken"/>
+                                }
                             </svg>
                             <span
                                 className={styles.movie__header__button__text}>{favorite ? 'Remove from Watch List' : 'Add to Watch List'}</span>
