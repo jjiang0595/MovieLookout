@@ -37,6 +37,7 @@ const MovieDetail = (props) => {
         setDisabled(true);
         console.log("CLICKED")
 
+        // ALLOWS USER TO CLICK ONCE EVERY 500 MS
         setTimeout(() => {
             setDisabled(false);
         }, 500)
@@ -88,6 +89,7 @@ const MovieDetail = (props) => {
             </div>
         </div>
     )
+
 }
 
 export default MovieDetail;

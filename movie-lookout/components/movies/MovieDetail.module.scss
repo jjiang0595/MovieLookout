@@ -46,8 +46,10 @@
       border-radius: 5rem;
       border: 1px solid black;
       background: linear-gradient(to left, #FFE3E1 50%, #FF9494 50%);
+      transition: background-position 0.5s ease;
       background-size: 200% 100%;
       margin-top: 1.5rem;
+      user-select: none;
 
       &:disabled, &[disabled] {
         border: 1px solid black;
