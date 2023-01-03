@@ -2,7 +2,13 @@ import styles from './AuthForm.module.scss'
 import {useContext, useEffect, useRef, useState} from "react";
 import AuthContext from "../../store/auth-context";
 import {useRouter} from "next/router";
-import {getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence, onAuthStateChanged} from "firebase/auth";
+import {
+    getAuth,
+    setPersistence,
+    signInWithEmailAndPassword,
+    browserSessionPersistence,
+    onAuthStateChanged
+} from "firebase/auth";
 import {auth, db} from "../../store/firebaseConfig";
 import {ref, set} from "firebase/database";
 
@@ -58,23 +64,20 @@ const AuthForm = (props) => {
                 .then(() => {
                     return signInWithEmailAndPassword(auth, emailInputRef.current.value, passwordInputRef.current.value);
                 })
+            onAuthStateChanged(auth, (user) => {
+                const uid = user.uid;
+                authCtx.login(uid)
+                if (user && !authType) {
+                    const userRef = ref(db, `users/${uid}`);
+                    set(userRef, {
+                        email: emailInputRef.current.value,
+                        password: passwordInputRef.current.value,
+                    });
+                }
+            })
             router.replace('/')
         }).catch((err) => {
             alert(err.message)
-        })
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const uid = user.uid;
-                const userRef = ref(db, `users/${uid}`);
-                if (authType) {
-                    authCtx.login(uid)
-                }
-                set(userRef, {
-                    email: emailInputRef.current.value,
-                    password: passwordInputRef.current.value,
-                });
-            }
         })
     }
 
