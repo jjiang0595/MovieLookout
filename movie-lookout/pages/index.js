@@ -16,8 +16,6 @@ export default function Home(props) {
             <MovieList
                 movies={props.movies} header="Trending Movies"
             />
-            <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
         </>
     )
 }

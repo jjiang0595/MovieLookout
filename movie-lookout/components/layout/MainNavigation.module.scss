@@ -50,6 +50,11 @@
     &_user {
       flex-direction: row;
       justify-content: center;
+
+
+      &:hover .userNav__dropdown {
+        display: block;
+      }
     }
   }
 
@@ -89,12 +94,12 @@
 
   &__dropdown {
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    margin-top: 10.5rem;
-    width: 11.7rem;
+    display: none;
+    margin-top: 10.35rem;
+    width: 11.3rem;
     background-color: #62B6B7;
     align-items: stretch;
+    border-top: 2px solid black;
     border-bottom-left-radius: 3rem;
     border-bottom-right-radius: 3rem;
     overflow: hidden;

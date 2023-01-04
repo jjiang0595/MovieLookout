@@ -7,7 +7,7 @@ import {onValue, ref} from "firebase/database";
 function MovieWatchlist() {
     const authCtx = useContext(AuthContext);
     const [watchlist, setWatchlist] = authCtx.isLoggedIn ? useState([]) : [];
-    const watchlistRef = ref(db, `users/${authCtx.user.uid}/watchlist`);
+    const watchlistRef = ref(db, `users/${authCtx.userId}/watchlist`);
 
     useEffect(() => {
         onValue(watchlistRef, (snapshot) => {

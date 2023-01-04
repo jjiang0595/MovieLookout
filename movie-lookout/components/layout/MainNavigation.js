@@ -1,46 +1,53 @@
 import styles from './MainNavigation.module.scss';
-import {useState, useContext} from "react";
+import {useState, useContext, useMemo, useEffect} from "react";
 import Link from "next/link";
 import AuthContext from "../../store/auth-context";
 import Searchbar from "./Searchbar";
+import {ref, onValue} from "firebase/database";
+import {db} from "../../store/firebaseConfig";
 
 function MainNavigation() {
     const authCtx = useContext(AuthContext);
+    const watchlistLength = useMemo(() => {
+        return authCtx.watchlistLength;
+    })
 
-    const [isOpen, setIsOpen] = useState(false);
-    const toggleSidebar = () => {
-        setIsOpen(!isOpen);
+    if (authCtx.isLoggedIn) {
+        const watchlistLengthRef = ref(db, `users/${authCtx.userId}/watchlist`)
+        onValue(watchlistLengthRef, snapshot => {
+            if (snapshot.exists()) {
+                const data = snapshot.val();
+                authCtx.setLength(Object.keys(data).length);
+            }
+        })
     }
+
 
     return (
         <header className={styles.header}>
             <Link href={'/'}>
                 <img src="/MovieLookoutLogo.png" alt="movie logo" className={styles.logo}/>
             </Link>
-            <Searchbar />
+            <Searchbar/>
             <nav className={styles.userNav}>
-                {/*DISPLAY WATCHLIST ONLY WHEN LOGGED IN*/}
                 <Link href="/watchlist" className={styles.userNav__iconBox}>
                     <svg className={styles.userNav__icon}>
                         <use href="/sprite.svg#icon-bookmarks"></use>
                     </svg>
-                    <span className={styles.userNav__notification}>{authCtx.watchlist.length}</span>
+                    {authCtx.isLoggedIn &&
+                        <span className={styles.userNav__notification}>{watchlistLength}</span>}
                     <span><b>Watch List</b></span>
                 </Link>
-                <div className={`${styles.userNav__iconBox_user} ${isOpen ? styles.active : ''}`}
-                     onClick={toggleSidebar}>
+                <div className={`${styles.userNav__iconBox_user}`}>
                     <svg className={styles.userNav__icon}>
                         <use href="/sprite.svg#icon-user"></use>
                     </svg>
                     <span><b>Guest</b></span>
 
-                    {/*IMPLEMENT HOVER INSTEAD OF CLICK FOR BETTER UX*/}
-                    {/*IMPLEMENT HOVER INSTEAD OF CLICK FOR BETTER UX*/}
-                    {/*IMPLEMENT HOVER INSTEAD OF CLICK FOR BETTER UX*/}
-                    {authCtx.isLoggedIn && isOpen && <div className={styles.userNav__dropdown}>
+                    {authCtx.isLoggedIn && <div className={styles.userNav__dropdown}>
                         <Link href="/" className={styles.userNav__dropdown__a} onClick={authCtx.logout}>Logout</Link>
                     </div>}
-                    {!authCtx.isLoggedIn && isOpen &&
+                    {!authCtx.isLoggedIn &&
                         <div className={`${styles.userNav__dropdown} ${styles.userNav__dropdown__loggedIn}`}>
                             <Link href="/login" className={styles.userNav__dropdown__a}>Login</Link>
                         </div>}

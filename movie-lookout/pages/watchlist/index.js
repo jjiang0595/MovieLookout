@@ -10,7 +10,8 @@ const Watchlist = () => {
 
     if (isLoggedIn) {
         return <MovieWatchlist/>
-
+    } else {
+        router.replace('/login');
     }
 }
 

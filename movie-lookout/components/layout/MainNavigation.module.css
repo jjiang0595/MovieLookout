@@ -1,0 +1,109 @@
+.header {
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #97DECE;
+  border-bottom: darkblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px black solid;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none;
+}
+
+.logo {
+  height: 5rem;
+  margin-left: 3rem;
+}
+
+.userNav {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  margin-right: 3rem;
+  z-index: 100;
+}
+.userNav > * {
+  padding: 0 2rem;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.userNav > *:hover {
+  background-color: #62B6B7;
+}
+.userNav__iconBox {
+  position: relative;
+  text-decoration: none;
+  color: black;
+}
+.userNav__iconBox_user {
+  flex-direction: row;
+  justify-content: center;
+}
+.userNav__iconBox_user:hover .userNav__dropdown {
+  display: block;
+}
+.userNav__icon {
+  height: 3rem;
+  width: 3rem;
+  margin-right: 0.7rem;
+}
+.userNav__button {
+  border: none;
+  background-color: transparent;
+  font-size: 1.4rem;
+  font-weight: 100;
+  cursor: pointer;
+}
+.userNav__button:focus {
+  outline: none;
+}
+.userNav__notification {
+  font-size: 1.5rem;
+  height: 1.75rem;
+  width: 1.75rem;
+  border-radius: 50%;
+  background-color: #ff5b5b;
+  color: #fff;
+  position: absolute;
+  top: 1rem;
+  left: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userNav__dropdown {
+  position: absolute;
+  display: none;
+  margin-top: 10.35rem;
+  width: 11.3rem;
+  background-color: #62B6B7;
+  align-items: stretch;
+  border-top: 2px solid black;
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+  overflow: hidden;
+}
+.userNav__dropdown__loggedIn {
+  margin-top: 10rem;
+}
+.userNav__dropdown__a {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  flex-direction: column;
+  text-decoration: none;
+  color: #000000;
+}
+.userNav__dropdown__a:hover {
+  background-color: #CBEDD5;
+}
+
+.active {
+  background-color: #62B6B7;
+}
+
+/*# sourceMappingURL=MainNavigation.module.css.map */

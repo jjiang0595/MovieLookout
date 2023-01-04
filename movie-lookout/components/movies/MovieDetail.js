@@ -12,7 +12,7 @@ const MovieDetail = (props) => {
 
     useMemo(() => {
         if (authCtx.isLoggedIn) {
-            const watchlistRef = ref(db, `users/${authCtx.user.uid}/watchlist`);
+            const watchlistRef = ref(db, `users/${authCtx.userId}/watchlist`);
             onValue(watchlistRef, (snapshot) => {
                 const data = snapshot.val();
                 for (const key in data) {
@@ -29,13 +29,12 @@ const MovieDetail = (props) => {
 
         setTransition(true);
         setFavorite(true);
-        await set(ref(db, `users/${authCtx.user.uid}/watchlist/${props.movieData.id}`), {
+        await set(ref(db, `users/${authCtx.userId}/watchlist/${props.movieData.id}`), {
             id: props.movieData.id,
             image: props.movieData.image,
             overview: props.movieData.overview,
         })
         setDisabled(true);
-        console.log("CLICKED")
 
         // ALLOWS USER TO CLICK ONCE EVERY 500 MS
         setTimeout(() => {
@@ -47,8 +46,8 @@ const MovieDetail = (props) => {
         setDisabled(true);
         setTransition(true);
         setFavorite(false);
-        await remove(ref(db, `users/${authCtx.user.uid}/watchlist/${props.movieData.id}`))
-        console.log("CLICKED")
+        await remove(ref(db, `users/${authCtx.userId}/watchlist/${props.movieData.id}`))
+
         setTimeout(() => {
             setDisabled(false);
         }, 500)

@@ -20,9 +20,9 @@ const AuthForm = (props) => {
 
     const authCtx = useContext(AuthContext)
 
-    if (authCtx.isLoggedIn) {
-        router.replace('/');
-    }
+    useEffect(() => {
+        router.prefetch('/');
+    })
 
     const authTypeHandler = type => e => {
         emailInputRef.current.value = '';
@@ -31,7 +31,6 @@ const AuthForm = (props) => {
     }
 
     const submitHandler = async (event) => {
-        console.log(db)
         event.preventDefault()
 
         let url;
@@ -66,7 +65,6 @@ const AuthForm = (props) => {
                 })
             onAuthStateChanged(auth, (user) => {
                 const uid = user.uid;
-                authCtx.login(uid)
                 if (user && !authType) {
                     const userRef = ref(db, `users/${uid}`);
                     set(userRef, {

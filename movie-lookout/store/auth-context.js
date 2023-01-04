@@ -1,4 +1,3 @@
-// -------------------- LOCAL STORAGE ---------------------
 import React, {useCallback, useEffect, useState} from "react";
 import {getIdToken, getAuth, onIdTokenChanged} from "firebase/auth";
 import {auth} from "./firebaseConfig";
@@ -8,57 +7,48 @@ let logoutTimer;
 const AuthContext = React.createContext({
     token: '',
     isLoggedIn: false,
-    onLogout: () => {},
-    onLogin: (token) => {},
-    onAdd: (movie) => {},
-    watchlist: [],
+    logout: () => {
+    },
+    login: (token) => {
+    },
+    watchlistLength: '',
 })
 
 export const AuthContextProvider = (props) => {
     const [user, setUser] = useState(null);
-    const [watchlist, setWatchlist] = useState([]);
+    const [length, setLength] = useState(null);
 
     useEffect(() => {
-        return(onIdTokenChanged(auth, (user) => {
-            if(user) {
-                setUser(user);
+        return (onIdTokenChanged(auth, (user) => {
+            if (user) {
+                setUser(user.uid);
             } else {
                 setUser(null);
             }
         }))
-    },[]);
+    }, []);
 
     const userIsLoggedIn = !!user;
 
-    const loginHandler = (token, expirationTime) => {
+    const loginHandler = (token) => {
         setUser(token)
     }
 
     const logoutHandler = useCallback(() => {
         setUser(null)
-        clearTimeout(logoutTimer)
     }, [])
 
-    const addToWatchlist = (movie) => {
-        setWatchlist(prevWatchlist => {
-            return prevWatchlist.concat(movie);
-        });
+    const setWatchlistLength = (length) => {
+        setLength(length)
     }
 
-     const removeFromWatchlist = (removedMovie) => {
-        setWatchlist(prevWatchlist => {
-            return prevWatchlist.filter(movie => movie.id !== removedMovie);
-        });
-    }
-
-     const contextValue = {
-         user: user,
+    const contextValue = {
+        userId: user,
         isLoggedIn: userIsLoggedIn,
         login: loginHandler,
         logout: logoutHandler,
-        addToList: addToWatchlist,
-        removeFromList: removeFromWatchlist,
-        watchlist: watchlist,
+        setLength: setWatchlistLength,
+        watchlistLength: length
     }
 
     return <AuthContext.Provider value={contextValue}>
