@@ -22,6 +22,7 @@ html {
   min-height: 100%;
   margin: 0 auto;
   background-image: linear-gradient(to bottom, #439a97, #3baca5, #30bfb2, #22d2bd, #11e5c7, #3fecc9, #59f4cb, #6efbcd, #8ef8cc, #a7f4cd, #bbf1d0, #cbedd5);
+  user-select: none;
 }
 
  body, div, span, applet, object, iframe,

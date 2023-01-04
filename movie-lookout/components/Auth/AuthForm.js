@@ -73,7 +73,12 @@ const AuthForm = (props) => {
                     });
                 }
             })
-            router.replace('/')
+            router.push({
+                pathname: '/',
+                query: {
+                    message: 'success'
+                }
+            }, '/')
         }).catch((err) => {
             alert(err.message)
         })

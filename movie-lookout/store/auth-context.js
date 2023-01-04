@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {getIdToken, getAuth, onIdTokenChanged} from "firebase/auth";
 import {auth} from "./firebaseConfig";
+import {signOut} from "firebase/auth";
 
 let logoutTimer;
 
@@ -21,9 +22,8 @@ export const AuthContextProvider = (props) => {
     useEffect(() => {
         return (onIdTokenChanged(auth, (user) => {
             if (user) {
+                console.log("RAN")
                 setUser(user.uid);
-            } else {
-                setUser(null);
             }
         }))
     }, []);
@@ -34,9 +34,9 @@ export const AuthContextProvider = (props) => {
         setUser(token)
     }
 
-    const logoutHandler = useCallback(() => {
+    const logoutHandler = () => {
         setUser(null)
-    }, [])
+    }
 
     const setWatchlistLength = (length) => {
         setLength(length)
