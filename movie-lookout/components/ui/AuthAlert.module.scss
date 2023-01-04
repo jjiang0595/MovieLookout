@@ -1,0 +1,14 @@
+.alert {
+  background-color: #d4edda;
+  border-color: #90ee90;
+  color: black;
+  justify-content: center;
+  padding: 1.25rem 3rem;
+  margin: 2rem 10rem 0 8rem;
+  border-radius: 1rem;
+
+  &__text {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+}

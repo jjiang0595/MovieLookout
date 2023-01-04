@@ -73,12 +73,22 @@ const AuthForm = (props) => {
                     });
                 }
             })
-            router.push({
-                pathname: '/',
-                query: {
-                    message: 'success'
-                }
-            }, '/')
+            // show different messages depending on the auth type
+            if (authType) {
+                router.replace({
+                    pathname: '/',
+                    query: {
+                        message: 'You have successfully logged in!'
+                    }
+                }, '/')
+            } else {
+                router.replace({
+                    pathname: '/',
+                    query: {
+                        message: 'You have successfully signed up!'
+                    }
+                }, '/')
+            }
         }).catch((err) => {
             alert(err.message)
         })

@@ -1,9 +1,8 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {getIdToken, getAuth, onIdTokenChanged} from "firebase/auth";
 import {auth} from "./firebaseConfig";
-import {signOut} from "firebase/auth";
+import {useRouter} from "next/router";
 
-let logoutTimer;
 
 const AuthContext = React.createContext({
     token: '',
@@ -16,6 +15,8 @@ const AuthContext = React.createContext({
 })
 
 export const AuthContextProvider = (props) => {
+    const router = useRouter();
+
     const [user, setUser] = useState(null);
     const [length, setLength] = useState(null);
 
@@ -36,6 +37,12 @@ export const AuthContextProvider = (props) => {
 
     const logoutHandler = () => {
         setUser(null)
+        router.replace({
+            pathname: '/',
+            query: {
+                message: 'You have been logged out.'
+            }
+        })
     }
 
     const setWatchlistLength = (length) => {
