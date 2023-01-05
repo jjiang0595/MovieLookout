@@ -37,7 +37,7 @@ export const AuthContextProvider = (props) => {
 
     const logoutHandler = () => {
         setUser(null)
-        router.replace({
+        router.push({
             pathname: '/',
             query: {
                 message: 'You have been logged out.'

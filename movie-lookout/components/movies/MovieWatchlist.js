@@ -9,19 +9,21 @@ function MovieWatchlist() {
     const [watchlist, setWatchlist] = authCtx.isLoggedIn ? useState([]) : [];
     const watchlistRef = ref(db, `users/${authCtx.userId}/watchlist`);
 
+
     useEffect(() => {
         onValue(watchlistRef, (snapshot) => {
             const data = snapshot.val();
-            const watchlist = [];
+            const newWatchlist = [];
             for (const key in data) {
                 const movie = {
                     id: data[key].id,
                     image: data[key].image,
                     overview: data[key].overview,
                 }
-                watchlist.push(movie);
+                console.log(movie)
+                newWatchlist.push(movie);
             }
-            setWatchlist(watchlist);
+            setWatchlist(newWatchlist);
         });
     }, []);
 

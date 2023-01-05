@@ -7,7 +7,8 @@ import {
     setPersistence,
     signInWithEmailAndPassword,
     browserSessionPersistence,
-    onAuthStateChanged
+    onAuthStateChanged,
+    createUserWithEmailAndPassword
 } from "firebase/auth";
 import {auth, db} from "../../store/firebaseConfig";
 import {ref, set} from "firebase/database";
@@ -31,67 +32,109 @@ const AuthForm = (props) => {
     }
 
     const submitHandler = async (event) => {
+        // NEW CLEANED UP CODE
         event.preventDefault()
 
-        let url;
-        if (authType) {
-            url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.NEXT_PUBLIC_API_KEY}`
+        if (!authType) {
+            createUserWithEmailAndPassword(auth, emailInputRef.current.value, passwordInputRef.current.value).then((userCredential) => {
+                const user = userCredential.user;
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage)
+            })
         } else {
-            url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.NEXT_PUBLIC_API_KEY}`
-        }
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({
-                email: emailInputRef.current.value,
-                password: passwordInputRef.current.value,
-                returnSecureToken: true
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                return res.json().then(data => {
-                    let errorMessage = 'Authentication failed!';
-                    throw new Error(errorMessage);
-                })
-            }
-        }).then((data) => {
             setPersistence(auth, browserSessionPersistence)
                 .then(() => {
                     return signInWithEmailAndPassword(auth, emailInputRef.current.value, passwordInputRef.current.value);
                 })
-            onAuthStateChanged(auth, (user) => {
-                const uid = user.uid;
-                if (user && !authType) {
-                    const userRef = ref(db, `users/${uid}`);
-                    set(userRef, {
-                        email: emailInputRef.current.value,
-                        password: passwordInputRef.current.value,
-                    });
-                }
-            })
-            // show different messages depending on the auth type
-            if (authType) {
-                router.replace({
-                    pathname: '/',
-                    query: {
-                        message: 'You have successfully logged in!'
-                    }
-                }, '/')
-            } else {
-                router.replace({
-                    pathname: '/',
-                    query: {
-                        message: 'You have successfully signed up!'
-                    }
-                }, '/')
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode, errorMessage)
+                })
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            const uid = user.uid;
+            if (user && !authType) {
+                const userRef = ref(db, `users/${uid}`);
+                set(userRef, {
+                    email: emailInputRef.current,
+                    password: passwordInputRef.current,
+                });
             }
-        }).catch((err) => {
-            alert(err.message)
         })
+
+        router.push({
+            pathname: '/',
+            query: {
+                message: authType ? 'You have been logged in.' : 'You have been signed up.'
+            }
+        })
+
+
+        // --------------------------------------------OLD CODE-----------------------------------------------------------------------
+        // let url;
+        // if (authType) {
+        //     url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.NEXT_PUBLIC_API_KEY}`
+        // } else {
+        //     url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.NEXT_PUBLIC_API_KEY}`
+        // }
+        // fetch(url, {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         email: emailInputRef.current.value,
+        //         password: passwordInputRef.current.value,
+        //         returnSecureToken: true
+        //     }),
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // }).then(res => {
+        //     if (res.ok) {
+        //         return res.json();
+        //     } else {
+        //         return res.json().then(data => {
+        //             let errorMessage = 'Authentication failed!';
+        //             throw new Error(errorMessage);
+        //         })
+        //     }
+        // }).then((data) => {
+        //     onAuthStateChanged(auth, (user) => {
+        //         const uid = user.uid;
+        //         if (user && !authType) {
+        //             const userRef = ref(db, `users/${uid}`);
+        //             set(userRef, {
+        //                 email: emailInputRef.current.value,
+        //                 password: passwordInputRef.current.value,
+        //             });
+        //         }
+        //     })
+        //     // show different messages depending on the auth type
+        //     if (authType) {
+        //         router.replace({
+        //             pathname: '/',
+        //             query: {
+        //                 message: 'You have successfully logged in!'
+        //             }
+        //         }, '/')
+        //     } else {
+        //         router.replace({
+        //             pathname: '/',
+        //             query: {
+        //                 message: 'You have successfully signed up!'
+        //             }
+        //         }, '/')
+        //     }
+        //
+        //     setPersistence(auth, browserSessionPersistence)
+        //         .then(() => {
+        //             return signInWithEmailAndPassword(auth, emailInputRef.current.value, passwordInputRef.current.value);
+        //         })
+        // }).catch((err) => {
+        //     alert(err.message)
+        // })
     }
 
 

@@ -8,11 +8,10 @@ const Watchlist = () => {
     const isLoggedIn = authCtx.isLoggedIn;
     const router = useRouter();
 
-    if (isLoggedIn) {
-        return <MovieWatchlist/>
-    } else {
-        router.replace('/login');
-    }
+
+
+    return <MovieWatchlist/>
+
 }
 
 export default Watchlist;

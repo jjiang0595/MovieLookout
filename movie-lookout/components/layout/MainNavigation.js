@@ -48,7 +48,7 @@ function MainNavigation() {
                         <Link href="/" className={styles.userNav__dropdown__a} onClick={authCtx.logout}>Logout</Link>
                     </div>}
                     {!authCtx.isLoggedIn &&
-                        <div className={`${styles.userNav__dropdown} ${styles.userNav__dropdown__loggedIn}`}>
+                        <div className={styles.userNav__dropdown}>
                             <Link href="/login" className={styles.userNav__dropdown__a}>Login</Link>
                         </div>}
                 </div>
