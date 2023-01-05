@@ -1,17 +1,24 @@
-import {useContext, useEffect} from "react";
+import {useMemo} from "react";
 import MovieWatchlist from "../../components/movies/MovieWatchlist";
-import AuthContext from "../../store/auth-context";
 import {useRouter} from "next/router";
+import {auth} from '../../store/firebaseConfig';
 
 const Watchlist = () => {
-    const authCtx = useContext(AuthContext);
-    const isLoggedIn = authCtx.isLoggedIn;
+    const user = auth.currentUser;
     const router = useRouter();
 
+    useMemo(() => {
+        if (!user) {
+            router.push('/login');
+        } else {
+            return <MovieWatchlist/>
 
+        }
+    }, [user])
 
-    return <MovieWatchlist/>
-
+    if (user) {
+        return <MovieWatchlist/>
+    }
 }
 
 export default Watchlist;

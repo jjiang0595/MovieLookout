@@ -23,7 +23,6 @@ export const AuthContextProvider = (props) => {
     useEffect(() => {
         return (onIdTokenChanged(auth, (user) => {
             if (user) {
-                console.log("RAN")
                 setUser(user.uid);
             }
         }))
@@ -41,10 +40,9 @@ export const AuthContextProvider = (props) => {
             router.push({
                 pathname: '/',
                 query: {
-                    message: 'You have been logged out',
-                    backgroundColor: '#d4edda',
+                    message: 'You have been logged out'
                 }
-            });
+            }, '/');
         })
     }
 
