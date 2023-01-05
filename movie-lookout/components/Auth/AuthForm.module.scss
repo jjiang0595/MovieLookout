@@ -25,26 +25,6 @@
   padding-bottom: 0;
 }
 
-// AUTH
-.auth {
-  background-image: url(../../public/spiderman.jpg);
-  background-size: cover;
-
-  display: flex;
-  opacity: .9;
-  height: 73.25rem;
-  justify-content: center;
-  align-items: center;
-  box-sizing: content-box;
-
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    width: 45rem;
-  }
-}
-
 .form {
   background-color: rgba(255, 255, 255, .90);
   display: flex;

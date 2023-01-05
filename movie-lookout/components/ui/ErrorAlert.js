@@ -1,10 +1,9 @@
-import styles from './AuthAlert.module.scss';
 import {useContext, useEffect, useState} from "react";
 import AuthContext from "../../store/auth-context";
 import {useRouter} from "next/router";
-
+import styles from './ErrorAlert.module.scss';
 const AuthAlert = (props) => {
-    const [showAlert, setShowAlert] = useState(true);
+    const [showAlert, setShowAlert] = useState(false);
     const authCtx = useContext(AuthContext);
     const router = useRouter();
 
@@ -18,12 +17,12 @@ const AuthAlert = (props) => {
         } else {
             hideAlert();
         }
-    }, [authCtx.isLoggedIn])
+    }, [router.query.message])
 
     return (
         <>
             {showAlert &&
-                <div className={`${styles.alert}`}>
+                <div className={`${styles.alert}`} >
                     <p className={styles.alert__text}>{router.query.message}</p>
                     <button className={styles.alert__x} onClick={hideAlert}>x</button>
                 </div>}

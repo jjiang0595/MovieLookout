@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 import {auth, db} from "../../store/firebaseConfig";
 import {ref, set} from "firebase/database";
+import AuthCodeMap from "./AuthCodeMap";
 
 const AuthForm = (props) => {
     const router = useRouter();
@@ -32,16 +33,13 @@ const AuthForm = (props) => {
     }
 
     const submitHandler = async (event) => {
-        // NEW CLEANED UP CODE
         event.preventDefault()
 
         if (!authType) {
             createUserWithEmailAndPassword(auth, emailInputRef.current.value, passwordInputRef.current.value).then((userCredential) => {
-                const user = userCredential.user;
-
                 onAuthStateChanged(auth, (user) => {
                     const uid = user.uid;
-                    if (user && !authType) {
+                    if (user) {
                         const userRef = ref(db, `users/${uid}`);
                         set(userRef, {
                             email: emailInputRef.current,
@@ -51,10 +49,12 @@ const AuthForm = (props) => {
                 })
             }).catch((error) => {
                 const errorCode = error.code;
-                const errorMessage = error.message;
-                router.push('/login');
-                console.clear()
-                throw new Error(errorMessage)
+                router.push({
+                    pathname: '/login',
+                    query: {
+                        message: AuthCodeMap(errorCode),
+                    },
+                }, '/login');
             })
         } else {
             setPersistence(auth, browserSessionPersistence)
@@ -64,119 +64,61 @@ const AuthForm = (props) => {
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    throw new Error(errorMessage)
+                    router.push({
+                        pathname: '/login',
+                        query: {
+                            message: AuthCodeMap(errorCode),
+                        },
+                    }, '/login');
                 })
         }
-
 
         router.push({
             pathname: '/',
             query: {
                 backgroundColor: '#d4edda',
-                message: 'You have been logged in.',
+                message: authType ? 'You have been logged in.' : 'You have been signed up.',
             },
             as: '/'
         })
-
-
-        // --------------------------------------------OLD CODE-----------------------------------------------------------------------
-        // let url;
-        // if (authType) {
-        //     url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.NEXT_PUBLIC_API_KEY}`
-        // } else {
-        //     url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.NEXT_PUBLIC_API_KEY}`
-        // }
-        // fetch(url, {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //         email: emailInputRef.current.value,
-        //         password: passwordInputRef.current.value,
-        //         returnSecureToken: true
-        //     }),
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // }).then(res => {
-        //     if (res.ok) {
-        //         return res.json();
-        //     } else {
-        //         return res.json().then(data => {
-        //             let errorMessage = 'Authentication failed!';
-        //             throw new Error(errorMessage);
-        //         })
-        //     }
-        // }).then((data) => {
-        //     onAuthStateChanged(auth, (user) => {
-        //         const uid = user.uid;
-        //         if (user && !authType) {
-        //             const userRef = ref(db, `users/${uid}`);
-        //             set(userRef, {
-        //                 email: emailInputRef.current.value,
-        //                 password: passwordInputRef.current.value,
-        //             });
-        //         }
-        //     })
-        //     // show different messages depending on the auth type
-        //     if (authType) {
-        //         router.replace({
-        //             pathname: '/',
-        //             query: {
-        //                 message: 'You have successfully logged in!'
-        //             }
-        //         }, '/')
-        //     } else {
-        //         router.replace({
-        //             pathname: '/',
-        //             query: {
-        //                 message: 'You have successfully signed up!'
-        //             }
-        //         }, '/')
-        //     }
-        //
-        //     setPersistence(auth, browserSessionPersistence)
-        //         .then(() => {
-        //             return signInWithEmailAndPassword(auth, emailInputRef.current.value, passwordInputRef.current.value);
-        //         })
-        // }).catch((err) => {
-        //     alert(err.message)
-        // })
     }
 
+// WHAT TO DO
+    // 1. HIDE ERROR ALERT WHEN CLICK ON OTHER LINKS
 
     return (
-        <div className={styles.auth}>
-            <div className={styles.auth__container}>
-                <div className={styles.authSelect}>
-                    <button className={(authType ? styles.active : '')}
-                            onClick={authTypeHandler(true)}>Login
-                    </button>
-                    <button className={(!authType ? styles.active : '')}
-                            onClick={authTypeHandler(false)}>Register
-                    </button>
-                </div>
-                <form onSubmit={submitHandler} className={styles.form}>
-                    <p className={styles.form__title}>{authType ? 'Login' : 'Register'}</p>
-                    <div className={styles.control}>
-                        <svg className={styles.control__icon}>
-                            <use href="/sprite.svg#icon-user"></use>
-                        </svg>
-                        <input ref={emailInputRef} className={styles.control__input} type="email" id="email"
-                               placeholder="Email"
-                               required/>
-                    </div>
-                    <div className={styles.control}>
-                        <svg className={styles.control__icon}>
-                            <use href="/sprite.svg#icon-key"></use>
-                        </svg>
-                        <input ref={passwordInputRef} className={styles.control__input} type="password" id="password"
-                               placeholder="Password" required/>
-                    </div>
-                    <div className={styles.actions}>
-                        <button className={styles.actions__button}>{authType ? 'Login' : 'Register'}</button>
-                    </div>
-                </form>
+        <>
+            <div className={styles.authSelect}>
+                <button className={(authType ? styles.active : '')}
+                        onClick={authTypeHandler(true)}>Login
+                </button>
+                <button className={(!authType ? styles.active : '')}
+                        onClick={authTypeHandler(false)}>Register
+                </button>
             </div>
-        </div>
+            <form onSubmit={submitHandler} className={styles.form}>
+                <p className={styles.form__title}>{authType ? 'Login' : 'Register'}</p>
+                <div className={styles.control}>
+                    <svg className={styles.control__icon}>
+                        <use href="/sprite.svg#icon-user"></use>
+                    </svg>
+                    <input ref={emailInputRef} className={styles.control__input} type="email" id="email"
+                           placeholder="Email"
+                           required/>
+                </div>
+                <div className={styles.control}>
+                    <svg className={styles.control__icon}>
+                        <use href="/sprite.svg#icon-key"></use>
+                    </svg>
+                    <input ref={passwordInputRef} className={styles.control__input} type="password" id="password"
+                           placeholder="Password" required/>
+                </div>
+                <div className={styles.actions}>
+                    <button className={styles.actions__button}>{authType ? 'Login' : 'Register'}</button>
+                </div>
+            </form>
+        </>
+
     )
 }
 

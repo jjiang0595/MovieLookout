@@ -6,17 +6,6 @@ import {useRouter} from "next/router";
 import AuthAlert from "../components/ui/AuthAlert";
 
 export default function Home(props) {
-    const router = useRouter();
-    const [showMessage, setShowMessage] = useState(false);
-    const [messageText, setMessageText] = useState('');
-
-    useEffect(() => {
-        if (router.query.message) {
-            setShowMessage(true);
-            setMessageText(router.query.message);
-        }
-    })
-
     return (
         <>
             <Head>
@@ -27,7 +16,7 @@ export default function Home(props) {
                 />
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            {showMessage && <AuthAlert message={messageText}/>}
+            <AuthAlert/>
             <MovieList
                 movies={props.movies} header="Trending Movies"
             />
