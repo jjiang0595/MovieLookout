@@ -18,6 +18,8 @@ function MainNavigation() {
             if (snapshot.exists()) {
                 const data = snapshot.val();
                 authCtx.setLength(Object.keys(data).length);
+            } else{
+                authCtx.setLength(0);
             }
         })
     }
