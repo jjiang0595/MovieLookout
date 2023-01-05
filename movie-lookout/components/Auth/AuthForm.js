@@ -38,10 +38,23 @@ const AuthForm = (props) => {
         if (!authType) {
             createUserWithEmailAndPassword(auth, emailInputRef.current.value, passwordInputRef.current.value).then((userCredential) => {
                 const user = userCredential.user;
+
+                onAuthStateChanged(auth, (user) => {
+                    const uid = user.uid;
+                    if (user && !authType) {
+                        const userRef = ref(db, `users/${uid}`);
+                        set(userRef, {
+                            email: emailInputRef.current,
+                            password: passwordInputRef.current,
+                        });
+                    }
+                })
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
+                router.push('/login');
+                console.clear()
+                throw new Error(errorMessage)
             })
         } else {
             setPersistence(auth, browserSessionPersistence)
@@ -51,26 +64,18 @@ const AuthForm = (props) => {
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    console.log(errorCode, errorMessage)
+                    throw new Error(errorMessage)
                 })
         }
 
-        onAuthStateChanged(auth, (user) => {
-            const uid = user.uid;
-            if (user && !authType) {
-                const userRef = ref(db, `users/${uid}`);
-                set(userRef, {
-                    email: emailInputRef.current,
-                    password: passwordInputRef.current,
-                });
-            }
-        })
 
         router.push({
             pathname: '/',
             query: {
-                message: authType ? 'You have been logged in.' : 'You have been signed up.'
-            }
+                backgroundColor: '#d4edda',
+                message: 'You have been logged in.',
+            },
+            as: '/'
         })
 
 

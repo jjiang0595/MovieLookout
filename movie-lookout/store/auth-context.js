@@ -36,12 +36,15 @@ export const AuthContextProvider = (props) => {
     }
 
     const logoutHandler = () => {
-        setUser(null)
-        router.push({
-            pathname: '/',
-            query: {
-                message: 'You have been logged out.'
-            }
+        auth.signOut().then(() => {
+            setUser(null);
+            router.push({
+                pathname: '/',
+                query: {
+                    message: 'You have been logged out',
+                    backgroundColor: '#d4edda',
+                }
+            });
         })
     }
 
