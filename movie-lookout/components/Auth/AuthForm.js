@@ -14,13 +14,6 @@ import {auth, db} from "../../store/firebaseConfig";
 import {ref, set} from "firebase/database";
 import AuthCodeMap from "./AuthCodeMap";
 
-
-// WHAT TO DO
-// 1. HIDE ERROR ALERT WHEN CLICK ON OTHER LINKS            ------------ COMPLETED-------------
-// 2. HIDE ERROR ALERT IN THE CONSOLE
-// 3. STYLE ERROR ALERT
-
-
 const AuthForm = (props) => {
     const router = useRouter();
     const [authType, setAuthType] = useState(true);

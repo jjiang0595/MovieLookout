@@ -4,7 +4,7 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 
 const Searchbar = (props) => {
-    const query = useRef(null);
+    const query = useRef("");
     const [searchResults, setSearchResults] = useState([]);
     const [showResults, setShowResults] = useState(false);
     const router = useRouter();
@@ -37,17 +37,21 @@ const Searchbar = (props) => {
     }
 
     const submitHandler = (event) => {
-        event.preventDefault();
-        setShowResults(false);
+        if (query.current.value?.length > 2) {
+            event.preventDefault();
+            setShowResults(false);
 
-        router.push({
-            pathname: '/search',
-            search: `?query=${query.current.value}`,
-            query: {
-                query: query.current.value,
-                title: 'Search Results'
-            }
-        })
+            router.push({
+                pathname: '/search',
+                search: `?query=${query.current.value}`,
+                query: {
+                    query: query.current.value,
+                    title: 'Search Results'
+                }
+            })
+        } else{
+            event.preventDefault()
+        }
     }
 
     return (
@@ -55,7 +59,7 @@ const Searchbar = (props) => {
             <input type="text" ref={query} onChange={searchHandler}
                    className={`${styles.search__input} ${showResults ? styles.search__input__bottom : ''}`}
                    placeholder="Search for a movie..."/>
-            <button className={styles.search__button}>
+            <button onClick={submitHandler} className={styles.search__button}>
                 <svg className={styles.search__icon}>
                     <use href="/sprite.svg#icon-search"></use>
                 </svg>
