@@ -1,11 +1,10 @@
 .footer {
   text-decoration: none;
-  background-color: #000;
+  background-color: #222222;
   color: #fff;
   padding: 1rem;
   text-align: center;
-  border-top-right-radius: 1rem;
-  border-top-left-radius: 1rem;
+  border-top: 0.5rem solid black;
   display: flex;
   flex-direction: column;
 }

@@ -24,7 +24,6 @@ const AuthAlert = (props) => {
             {showAlert &&
                 <div className={`${styles.alert}`} >
                     <p className={styles.alert__text}>{router.query.message}</p>
-                    <button className={styles.alert__x} onClick={hideAlert}>x</button>
                 </div>}
         </>
     )

@@ -56,6 +56,7 @@ const AuthForm = (props) => {
                 })
             }).catch((error) => {
                 const errorCode = error.code;
+                console.log(errorCode)
                 router.push({
                     pathname: '/login',
                     query: {
@@ -88,7 +89,7 @@ const AuthForm = (props) => {
     }
 
     return (
-        <>
+        <div className={styles.container}>
             <div className={styles.authSelect}>
                 <button className={(authType ? styles.active : '')}
                         onClick={authTypeHandler(true)}>Login
@@ -118,7 +119,7 @@ const AuthForm = (props) => {
                     <button className={styles.actions__button}>{authType ? 'Login' : 'Register'}</button>
                 </div>
             </form>
-        </>
+        </div>
 
     )
 }

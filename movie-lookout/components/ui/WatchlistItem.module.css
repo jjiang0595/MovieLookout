@@ -1,0 +1,38 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(5, min-content);
+  grid-template-rows: repeat(4, min-content);
+  grid-column-gap: 1rem;
+  grid-row-gap: 5rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  justify-content: space-evenly;
+}
+.list__item {
+  position: relative;
+}
+.list__item__poster {
+  height: 24rem;
+  width: 18rem;
+  margin-right: 3rem;
+  border-radius: 0.5rem;
+}
+.list__item__button {
+  position: absolute;
+  top: 4%;
+  left: 69%;
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.1rem;
+  cursor: pointer;
+}
+.list__item__button__icon {
+  display: flex;
+  align-items: center;
+  height: 2.25rem;
+  width: 2.25rem;
+  fill: black;
+}
+
+/*# sourceMappingURL=WatchlistItem.module.css.map */

@@ -3,6 +3,8 @@ import {useContext, useEffect, useState} from "react";
 import AuthContext from "../../store/auth-context";
 import {db} from "../../store/firebaseConfig";
 import {onValue, ref} from "firebase/database";
+import Link from "next/link";
+import WatchlistItem from "../ui/WatchlistItem";
 
 function MovieWatchlist() {
     const authCtx = useContext(AuthContext);
@@ -20,23 +22,20 @@ function MovieWatchlist() {
                     image: data[key].image,
                     overview: data[key].overview,
                 }
-                console.log(movie)
                 newWatchlist.push(movie);
             }
             setWatchlist(newWatchlist);
         });
     }, []);
 
-
     return (
-        <div className={styles.list}>
-            <h1 className={styles.list__title}>Watchlist</h1>
-            {watchlist.length > 0 && watchlist.map(movie => (
-                <div className={styles.list__item} key={movie.id}>
-                    <img className={styles.list__item__poster} src={`http://image.tmdb.org/t/p/w500/${movie.image}`}/>
-                    <span className={styles.list__item__overview}>{movie.overview}</span>
-                </div>
-            ))}
+        <div className={styles.container}>
+            <span className={styles.title}>Watchlist</span>
+            <div className={styles.list}>
+                {watchlist.length > 0 && watchlist.map(movie => (
+                    <WatchlistItem key={movie.id} movieId={movie.id} image={movie.image}/>
+                ))}
+            </div>
 
             {watchlist.length === 0 &&
                 <div className={styles.list__empty}>

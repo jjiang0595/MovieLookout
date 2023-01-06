@@ -10,10 +10,8 @@ const LoginPage = () => {
 
     return (
         <div className={styles.auth}>
-            <div className={styles.auth__container}>
                 <ErrorAlert/>
                 <AuthForm/>
-            </div>
         </div>
     );
 

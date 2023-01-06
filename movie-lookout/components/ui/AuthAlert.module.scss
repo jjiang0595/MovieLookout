@@ -1,5 +1,4 @@
 .alert {
-  border-color: #90ee90;
   color: black;
   padding: 1.25rem 3rem;
   margin: 2rem 10rem 0 8rem;
@@ -20,5 +19,6 @@
     border: none;
     cursor: pointer;
     padding: .6rem;
+    user-select: none;
   }
 }

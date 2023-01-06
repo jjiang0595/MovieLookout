@@ -4,6 +4,7 @@
   background-size: cover;
 
   display: flex;
+  flex-direction: column;
   opacity: .9;
   height: 73.25rem;
   justify-content: center;
@@ -11,9 +12,4 @@
   box-sizing: content-box;
   z-index: -1;
 
-  &__container {
-    display: flex;
-    flex-direction: column;
-    width: 45rem;
-  }
 }

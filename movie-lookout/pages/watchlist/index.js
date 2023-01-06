@@ -9,7 +9,12 @@ const Watchlist = () => {
 
     useMemo(() => {
         if (!user) {
-            router.push('/login');
+            router.push({
+                pathname: '/login',
+                query: {
+                    message: 'You must be logged in to view your watchlist'
+                }
+            }, '/login');
         } else {
             return <MovieWatchlist/>
 

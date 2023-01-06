@@ -2,17 +2,13 @@
   background-image: url(../../public/spiderman.jpg);
   background-size: cover;
   display: flex;
+  flex-direction: column;
   opacity: 0.9;
   height: 73.25rem;
   justify-content: center;
   align-items: center;
   box-sizing: content-box;
   z-index: -1;
-}
-.auth__container {
-  display: flex;
-  flex-direction: column;
-  width: 45rem;
 }
 
 /*# sourceMappingURL=index.module.css.map */
