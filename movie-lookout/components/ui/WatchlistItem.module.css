@@ -10,6 +10,7 @@
 }
 .list__item {
   position: relative;
+  overflow: hidden;
 }
 .list__item__poster {
   height: 24rem;
@@ -19,13 +20,14 @@
 }
 .list__item__button {
   position: absolute;
-  top: 4%;
+  top: -10%;
   left: 69%;
   background-color: whitesmoke;
   border: none;
   border-radius: 2rem;
   padding: 0.1rem;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 .list__item__button__icon {
   display: flex;
@@ -33,6 +35,10 @@
   height: 2.25rem;
   width: 2.25rem;
   fill: black;
+}
+.list__item:hover .list__item__button {
+  transition: all 0.2s ease-in-out;
+  top: 4%;
 }
 
 /*# sourceMappingURL=WatchlistItem.module.css.map */

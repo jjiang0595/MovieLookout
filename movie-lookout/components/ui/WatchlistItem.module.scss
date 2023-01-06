@@ -21,6 +21,7 @@
 
   &__item {
     position: relative;
+    overflow: hidden;
 
     &__poster {
       height: 24rem;
@@ -31,13 +32,14 @@
 
     &__button {
       position: absolute;
-      top: 4%;
+      top: -10%;
       left: 69%;
       background-color: whitesmoke;
       border: none;
       border-radius: 2rem;
       padding: .1rem;
       cursor: pointer;
+      transition: all .2s ease-in-out;
 
       &__icon {
         display: flex;
@@ -46,6 +48,11 @@
         width: 2.25rem;
         fill: black;
       }
+    }
+
+    &:hover .list__item__button {
+      transition: all .2s ease-in-out;
+      top: 4%;
     }
   }
 }
