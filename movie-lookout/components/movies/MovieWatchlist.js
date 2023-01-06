@@ -31,11 +31,14 @@ function MovieWatchlist() {
     return (
         <div className={styles.container}>
             <span className={styles.title}>Watchlist</span>
-            <div className={styles.list}>
-                {watchlist.length > 0 && watchlist.map(movie => (
-                    <WatchlistItem key={movie.id} movieId={movie.id} image={movie.image}/>
-                ))}
-            </div>
+
+            {watchlist.length > 0 &&
+                <div className={styles.list}>
+                    {watchlist.map(movie => (
+                        <WatchlistItem key={movie.id} movieId={movie.id} image={movie.image}/>
+                    ))}
+                </div>
+            }
 
             {watchlist.length === 0 &&
                 <div className={styles.list__empty}>

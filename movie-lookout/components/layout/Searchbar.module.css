@@ -15,17 +15,17 @@
   border: none;
   padding: 1rem 2rem;
   border-radius: 100px;
-  width: 90%;
+  width: 100%;
   transition: all 0.2s ease;
   margin-right: -3.25rem;
 }
 .search__input:focus {
   outline: none;
-  width: 100%;
+  width: 90%;
 }
 .search__input:focus ~ .search__results {
   outline: none;
-  width: 100%;
+  width: 90%;
 }
 .search__input::-webkit-input-placeholder {
   font-weight: 100;
@@ -38,13 +38,12 @@
 .search__button {
   border: none;
   background-color: #f4f2f2;
-  cursor: pointer;
 }
 .search__button:focus {
   outline: none;
 }
 .search__button:active {
-  transform: translateY(2px);
+  transform: translateY(-1px);
 }
 .search__icon {
   height: 2rem;
@@ -54,7 +53,7 @@
 .search__results {
   position: absolute;
   top: 100%;
-  width: 90%;
+  width: 100%;
   background-color: #f4f2f2;
   overflow: hidden;
   transition: all 0.2s ease;

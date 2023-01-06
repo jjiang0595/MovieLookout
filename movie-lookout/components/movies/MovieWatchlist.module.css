@@ -1,5 +1,7 @@
 .container {
   margin-top: 3rem;
+  padding-bottom: 3rem;
+  min-height: 71.6vh;
 }
 
 .title {
@@ -19,17 +21,22 @@
   grid-row-gap: 5rem;
   margin-left: 3rem;
   margin-right: 3rem;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+}
+.list__empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 .list__empty__text {
   font-weight: 500;
   font-size: 3rem;
+  margin-top: 2rem;
 }
-.list__empty > * {
-  display: flex;
-  justify-content: center;
-  margin: 3rem;
-  text-decoration: none;
+.list__empty__img {
+  margin-top: 10rem;
 }
 
 /*# sourceMappingURL=MovieWatchlist.module.css.map */

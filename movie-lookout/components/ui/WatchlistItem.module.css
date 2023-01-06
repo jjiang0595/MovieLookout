@@ -1,24 +1,14 @@
-.list {
-  display: grid;
-  grid-template-columns: repeat(5, min-content);
-  grid-template-rows: repeat(4, min-content);
-  grid-column-gap: 1rem;
-  grid-row-gap: 5rem;
-  margin-left: 3rem;
-  margin-right: 3rem;
-  justify-content: space-evenly;
-}
-.list__item {
+.item {
   position: relative;
   overflow: hidden;
 }
-.list__item__poster {
+.item__poster {
   height: 24rem;
   width: 18rem;
   margin-right: 3rem;
   border-radius: 0.5rem;
 }
-.list__item__button {
+.item__button {
   position: absolute;
   top: -10%;
   left: 69%;
@@ -29,14 +19,14 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
-.list__item__button__icon {
+.item__button__icon {
   display: flex;
   align-items: center;
   height: 2.25rem;
   width: 2.25rem;
   fill: black;
 }
-.list__item:hover .list__item__button {
+.item:hover .item__button {
   transition: all 0.2s ease-in-out;
   top: 4%;
 }

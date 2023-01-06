@@ -59,8 +59,8 @@ const Searchbar = (props) => {
             <input type="text" ref={query} onChange={searchHandler}
                    className={`${styles.search__input} ${showResults ? styles.search__input__bottom : ''}`}
                    placeholder="Search for a movie..."/>
-            <button onClick={submitHandler} className={styles.search__button}>
-                <svg className={styles.search__icon}>
+            <button className={styles.search__button}>
+                <svg className={styles.search__icon} >
                     <use href="/sprite.svg#icon-search"></use>
                 </svg>
             </button>
