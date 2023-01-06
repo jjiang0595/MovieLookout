@@ -3,8 +3,13 @@ import {useContext, useEffect, useState} from "react";
 import AuthContext from "../../store/auth-context";
 import {db} from "../../store/firebaseConfig";
 import {onValue, ref} from "firebase/database";
-import Link from "next/link";
 import WatchlistItem from "../ui/WatchlistItem";
+
+// ----------------------------------------------------------------------
+// | WHAT TO DO TOMORROW                                                |
+// | SHOW A MOVIES NOT FOUND MESSAGE WHEN THE SEARCH RETURNS NO RESULTS |
+// ----------------------------------------------------------------------
+
 
 function MovieWatchlist() {
     const authCtx = useContext(AuthContext);
