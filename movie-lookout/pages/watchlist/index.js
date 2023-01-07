@@ -7,6 +7,9 @@ const Watchlist = () => {
     const user = auth.currentUser;
     const router = useRouter();
 
+    if (typeof window === "undefined") return null;
+
+
     useMemo(() => {
         if (!user) {
             router.push({
