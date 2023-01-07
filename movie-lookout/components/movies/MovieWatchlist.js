@@ -38,18 +38,23 @@ function MovieWatchlist() {
             <span className={styles.title}>Watchlist</span>
 
             {watchlist.length > 0 &&
-                <div className={styles.list}>
-                    {watchlist.map(movie => (
-                        <WatchlistItem key={movie.id} movieId={movie.id} image={movie.image}/>
-                    ))}
-                </div>
+                <>
+                    <div className={styles.list}>
+                        {watchlist.map(movie => (
+                            <WatchlistItem key={movie.id} movieId={movie.id} image={movie.image}/>
+                        ))}
+                    </div>
+                    <img src="/jerry_sleeping.png" alt="jerry sleeping" className={styles.list__empty__img}/>
+                </>
             }
 
             {watchlist.length === 0 &&
-                <div className={styles.list__empty}>
-                    <span className={styles.list__empty__text}>Your watchlist is empty.</span>
+                <>
+                    <div className={styles.list__empty}>
+                        <span className={styles.list__empty__text}>Your watchlist is empty.</span>
+                    </div>
                     <img src="/dog-digging-hole.png" alt="dog digging hole" className={styles.list__empty__img}/>
-                </div>
+                </>
             }
         </div>
     );

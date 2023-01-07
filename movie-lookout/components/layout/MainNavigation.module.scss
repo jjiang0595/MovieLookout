@@ -1,23 +1,35 @@
 // HEADER
 .header {
   font-size: 1.4rem;
-  height: 7rem;
   background-color: #97DECE;
   border-bottom: darkblue;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 3px black solid;
+  min-height: 6.5rem;
 
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none;
+
+  @media only screen and (max-width: 966px) {
+    flex-wrap: wrap;
+    align-content: space-around;
+  }
 }
 
 // LOGO
 .logo {
   height: 5rem;
   margin-left: 3rem;
+
+
+  @media only screen and (max-width: 1200px) {
+    margin-top: .75rem;
+    margin-bottom: .75rem;
+    height: 4rem;
+  }
 }
 
 
@@ -27,7 +39,7 @@
   align-items: center;
   margin-right: 3rem;
   z-index: 100;
-
+  max-width: inherit;
 
   & > * {
     padding: 0 2rem;
@@ -47,10 +59,8 @@
     text-decoration: none;
     color: black;
 
-    &_user {
-      flex-direction: row;
+    &__user {
       justify-content: center;
-
 
       &:hover .userNav__dropdown {
         display: block;
@@ -58,10 +68,17 @@
     }
   }
 
+  &__text {
+    margin-left: .7rem;
+    @media only screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+
   &__icon {
     height: 3rem;
     width: 3rem;
-    margin-right: .7rem;
+    justify-content: center;
   }
 
   &__button {
@@ -95,14 +112,20 @@
   &__dropdown {
     position: absolute;
     display: none;
-    margin-top: 11rem;
+    margin-top: 10.55rem;
     width: 11.3rem;
     background-color: #62B6B7;
     align-items: stretch;
-    border-top: 2px solid black;
+    border-top: 1px solid black;
     border-bottom-left-radius: 3rem;
     border-bottom-right-radius: 3rem;
     overflow: hidden;
+
+    @media only screen and (max-width: 600px) {
+      margin-top: 9.85rem;
+      width: 7rem;
+    }
+
 
     &__a {
       display: flex;

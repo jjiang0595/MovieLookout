@@ -1,20 +1,33 @@
 .header {
   font-size: 1.4rem;
-  height: 7rem;
   background-color: #97DECE;
   border-bottom: darkblue;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 3px black solid;
+  min-height: 6.5rem;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none;
+}
+@media only screen and (max-width: 966px) {
+  .header {
+    flex-wrap: wrap;
+    align-content: space-around;
+  }
 }
 
 .logo {
   height: 5rem;
   margin-left: 3rem;
+}
+@media only screen and (max-width: 1200px) {
+  .logo {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    height: 4rem;
+  }
 }
 
 .userNav {
@@ -23,6 +36,7 @@
   align-items: center;
   margin-right: 3rem;
   z-index: 100;
+  max-width: inherit;
 }
 .userNav > * {
   padding: 0 2rem;
@@ -39,17 +53,24 @@
   text-decoration: none;
   color: black;
 }
-.userNav__iconBox_user {
-  flex-direction: row;
+.userNav__iconBox__user {
   justify-content: center;
 }
-.userNav__iconBox_user:hover .userNav__dropdown {
+.userNav__iconBox__user:hover .userNav__dropdown {
   display: block;
+}
+.userNav__text {
+  margin-left: 0.7rem;
+}
+@media only screen and (max-width: 600px) {
+  .userNav__text {
+    display: none;
+  }
 }
 .userNav__icon {
   height: 3rem;
   width: 3rem;
-  margin-right: 0.7rem;
+  justify-content: center;
 }
 .userNav__button {
   border: none;
@@ -78,14 +99,20 @@
 .userNav__dropdown {
   position: absolute;
   display: none;
-  margin-top: 11rem;
+  margin-top: 10.55rem;
   width: 11.3rem;
   background-color: #62B6B7;
   align-items: stretch;
-  border-top: 2px solid black;
+  border-top: 1px solid black;
   border-bottom-left-radius: 3rem;
   border-bottom-right-radius: 3rem;
   overflow: hidden;
+}
+@media only screen and (max-width: 600px) {
+  .userNav__dropdown {
+    margin-top: 9.85rem;
+    width: 7rem;
+  }
 }
 .userNav__dropdown__a {
   display: flex;

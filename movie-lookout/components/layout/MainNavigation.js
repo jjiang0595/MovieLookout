@@ -38,17 +38,17 @@ function MainNavigation() {
                     </svg>
                     {authCtx.isLoggedIn &&
                         <span className={styles.userNav__notification}>{watchlistLength}</span>}
-                    <span><b>Watchlist</b></span>
+                    <span className={styles.userNav__text}>Watchlist</span>
                 </Link>
-                <div className={`${styles.userNav__iconBox_user}`}>
+                <div className={`${styles.userNav__iconBox__user}`}>
                     <svg className={styles.userNav__icon}>
                         <use href="/sprite.svg#icon-user"></use>
                     </svg>
                     {!authCtx.isLoggedIn &&
-                        <span><b>Guest</b></span>
+                        <span className={styles.userNav__text}>Guest</span>
                     }
 
-                    {authCtx.isLoggedIn && <div className={styles.userNav__dropdown} style={{width: '7.7rem'}}>
+                    {authCtx.isLoggedIn && <div className={styles.userNav__dropdown} style={{width: '7rem'}}>
                         <Link href="/" className={styles.userNav__dropdown__a} onClick={authCtx.logout}>Logout</Link>
                     </div>}
                     {!authCtx.isLoggedIn &&

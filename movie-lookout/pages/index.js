@@ -13,7 +13,6 @@ export default function Home(props) {
                     content="Search for your favorite movies!"
                 />
                 <link rel="icon" href="/favicon.ico"/>
-                <style> @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap'); </style>
             </Head>
             <AuthAlert/>
             <MovieList

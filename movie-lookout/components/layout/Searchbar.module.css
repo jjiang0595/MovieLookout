@@ -7,6 +7,19 @@
   position: relative;
   z-index: 100;
 }
+@media only screen and (max-width: 1100px) {
+  .search {
+    flex: 0 0 35%;
+  }
+}
+@media only screen and (max-width: 966px) {
+  .search {
+    margin-left: 2.5rem;
+    order: 1;
+    flex: 0 0 90%;
+    height: 8rem;
+  }
+}
 .search__input {
   font-family: inherit;
   font-size: inherit;
@@ -57,6 +70,11 @@
   background-color: #f4f2f2;
   overflow: hidden;
   transition: all 0.2s ease;
+}
+@media only screen and (max-width: 966px) {
+  .search__results {
+    top: 60%;
+  }
 }
 .search__results__item {
   display: flex;
