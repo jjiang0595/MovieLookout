@@ -5,8 +5,15 @@
   &__content {
     background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.5));
     padding: 3rem 3rem;
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: repeat(3, min-content);
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: min-content;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   &__image {
@@ -15,13 +22,18 @@
   }
 
   &__header {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     padding-left: 3rem;
     padding-right: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media only screen and (max-width: 600px) {
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 2rem;
+      grid-row: 2/3;
+    }
 
     & > * {
       margin-bottom: 1rem;
