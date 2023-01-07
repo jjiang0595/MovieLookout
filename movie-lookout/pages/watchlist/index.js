@@ -17,7 +17,6 @@ const Watchlist = () => {
             }, '/login');
         } else {
             return <MovieWatchlist/>
-
         }
     }, [user])
 

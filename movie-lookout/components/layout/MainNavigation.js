@@ -18,7 +18,7 @@ function MainNavigation() {
             if (snapshot.exists()) {
                 const data = snapshot.val();
                 authCtx.setLength(Object.keys(data).length);
-            } else{
+            } else {
                 authCtx.setLength(0);
             }
         })
@@ -38,15 +38,17 @@ function MainNavigation() {
                     </svg>
                     {authCtx.isLoggedIn &&
                         <span className={styles.userNav__notification}>{watchlistLength}</span>}
-                    <span><b>Watch List</b></span>
+                    <span><b>Watchlist</b></span>
                 </Link>
                 <div className={`${styles.userNav__iconBox_user}`}>
                     <svg className={styles.userNav__icon}>
                         <use href="/sprite.svg#icon-user"></use>
                     </svg>
-                    <span><b>Guest</b></span>
+                    {!authCtx.isLoggedIn &&
+                        <span><b>Guest</b></span>
+                    }
 
-                    {authCtx.isLoggedIn && <div className={styles.userNav__dropdown}>
+                    {authCtx.isLoggedIn && <div className={styles.userNav__dropdown} style={{width: '7.7rem'}}>
                         <Link href="/" className={styles.userNav__dropdown__a} onClick={authCtx.logout}>Logout</Link>
                     </div>}
                     {!authCtx.isLoggedIn &&

@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import MovieList from "../components/movies/MovieList";
-import {useEffect, useState} from "react";
 import {withRouter} from "next/router";
-import {useRouter} from "next/router";
 import AuthAlert from "../components/ui/AuthAlert";
 
 export default function Home(props) {
@@ -15,6 +13,7 @@ export default function Home(props) {
                     content="Search for your favorite movies!"
                 />
                 <link rel="icon" href="/favicon.ico"/>
+                <style> @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap'); </style>
             </Head>
             <AuthAlert/>
             <MovieList

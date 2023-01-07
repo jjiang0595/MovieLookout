@@ -4,7 +4,7 @@ import MovieList from "../../components/movies/MovieList";
 const SearchResults = (props) => {
     const router = useRouter();
     const query = router.query.query;
-    const header = query ? `Search Results for ${query}` : 'Search Results';
+    const header = query ? `Search for "${query}"` : 'Search Results';
 
     return <MovieList movies={props.movies} header={header} />
 }

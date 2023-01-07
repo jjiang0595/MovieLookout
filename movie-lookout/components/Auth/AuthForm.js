@@ -49,7 +49,7 @@ const AuthForm = (props) => {
                 })
             }).catch((error) => {
                 const errorCode = error.code;
-                console.log(errorCode)
+                console.warn = () => {};
                 router.push({
                     pathname: '/login',
                     query: {
@@ -64,6 +64,7 @@ const AuthForm = (props) => {
                 })
                 .catch((error) => {
                     const errorCode = error.code;
+                    console.warn = () => {};
                     router.push({
                         pathname: '/login',
                         query: {
@@ -72,6 +73,7 @@ const AuthForm = (props) => {
                     }, '/login');
                 })
         }
+        console.warn = () => {};
 
         router.push({
             pathname: '/',

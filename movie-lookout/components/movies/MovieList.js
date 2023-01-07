@@ -15,6 +15,7 @@ function MovieList(props) {
                         description={movie.description}
                     />
                 ))}
+                {props.movies.length === 0 && <p className={styles.list__movies__noResults}>No movies found</p>}
             </ul>
         </div>
     );
