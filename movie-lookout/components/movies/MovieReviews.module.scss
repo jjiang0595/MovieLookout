@@ -1,5 +1,4 @@
 .reviews {
-
   min-height: 30rem;
   padding: 3rem 3rem;
 
@@ -38,7 +37,7 @@
         justify-content: space-between;
         margin-bottom: 1rem;
 
-        &__name {
+        &__title {
           font-weight: 700;
           font-size: 1.6rem;
         }
@@ -57,34 +56,120 @@
           margin-bottom: 1rem;
         }
       }
-
-      &__footer {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        margin-top: 2rem;
-
-
-        &__likes {
-          height: 2.5rem;
-          width: 2.5rem;
-          cursor: pointer;
-
-          &__count {
-            font-size: 1.4rem;
-            color: #999;
-
-          }
-        }
-
-        &__dislikes {
-          height: 2.5rem;
-          width: 2.5rem;
-          cursor: pointer;
-
-
-        }
-      }
     }
   }
+
+  &__form {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+
+
+    &__header {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 3rem;
+
+
+      &:before {
+        content: '';
+        display: inline-block;
+        width: .5rem;
+        height: 4rem;
+        background-color: #62B6B7;
+        margin-right: 1rem;
+      }
+    }
+
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+
+
+      &__label {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: .5rem;
+      }
+
+      &__input {
+        font-family: inherit;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid #999;
+        font-size: 1.4rem;
+        max-height: 10rem;
+        min-height: 4rem;
+        max-width: 110rem;
+        min-width: 110rem;
+      }
+    }
+
+    &__button {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid #999;
+      font-size: 1.4rem;
+      cursor: pointer;
+      background-color: #62B6B7;
+      color: white;
+    }
+  }
+}
+
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+  margin-top: 1rem;
+  border: none;
+  float: left;
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+  float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label {
+  color: #FFD700;
+}
+
+/* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label {
+  color: #FFED85;
 }

@@ -5,12 +5,6 @@ import {db} from "../../store/firebaseConfig";
 import {onValue, ref} from "firebase/database";
 import WatchlistItem from "../ui/WatchlistItem";
 
-// ----------------------------------------------------------------------
-// | WHAT TO DO TOMORROW                                                |
-// | SHOW A MOVIES NOT FOUND MESSAGE WHEN THE SEARCH RETURNS NO RESULTS |
-// ----------------------------------------------------------------------
-
-
 function MovieWatchlist() {
     const authCtx = useContext(AuthContext);
     const [watchlist, setWatchlist] = authCtx.isLoggedIn ? useState([]) : [];
@@ -43,7 +37,7 @@ function MovieWatchlist() {
                         {watchlist.map(movie => (
                             <WatchlistItem key={movie.id} movieId={movie.id} image={movie.image}/>
                         ))}
-                    </div>
+                    </div>*
                     <img src="/jerry_sleeping.png" alt="jerry sleeping" className={styles.list__empty__img}/>
                 </>
             }

@@ -1,3 +1,4 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 .reviews {
   min-height: 30rem;
   padding: 3rem 3rem;
@@ -35,7 +36,7 @@
   justify-content: space-between;
   margin-bottom: 1rem;
 }
-.reviews__list__item__header__name {
+.reviews__list__item__header__title {
   font-weight: 700;
   font-size: 1.6rem;
 }
@@ -50,25 +51,101 @@
 .reviews__list__item__body__text {
   margin-bottom: 1rem;
 }
-.reviews__list__item__footer {
+.reviews__form {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+.reviews__form__header {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  margin-top: 2rem;
+  font-weight: 700;
+  font-size: 3rem;
 }
-.reviews__list__item__footer__likes {
-  height: 2.5rem;
-  width: 2.5rem;
-  cursor: pointer;
+.reviews__form__header:before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 4rem;
+  background-color: #62B6B7;
+  margin-right: 1rem;
 }
-.reviews__list__item__footer__likes__count {
+.reviews__form__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.reviews__form__group__label {
   font-size: 1.4rem;
-  color: #999;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
-.reviews__list__item__footer__dislikes {
-  height: 2.5rem;
-  width: 2.5rem;
+.reviews__form__group__input {
+  font-family: inherit;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #999;
+  font-size: 1.4rem;
+  max-height: 10rem;
+  min-height: 4rem;
+  max-width: 110rem;
+  min-width: 110rem;
+}
+.reviews__form__button {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #999;
+  font-size: 1.4rem;
   cursor: pointer;
+  background-color: #62B6B7;
+  color: white;
+}
+
+/****** Style Star Rating Widget *****/
+.rating {
+  margin-top: 1rem;
+  border: none;
+  float: left;
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+  float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #FFD700;
+}
+
+/* hover previous stars in list */
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+  color: #FFED85;
 }
 
 /*# sourceMappingURL=MovieReviews.module.css.map */

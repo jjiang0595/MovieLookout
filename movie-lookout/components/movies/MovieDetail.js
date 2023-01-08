@@ -89,7 +89,7 @@ const MovieDetail = (props) => {
                     </div>
                 </div>
             </div>
-            <MovieReviews />
+            <MovieReviews movieId={props.movieData.id} />
         </>
     )
 
