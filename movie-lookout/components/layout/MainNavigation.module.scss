@@ -120,6 +120,7 @@
     border-bottom-left-radius: 3rem;
     border-bottom-right-radius: 3rem;
     overflow: hidden;
+    animation: fadein .1s ease-in-out;
 
     @media only screen and (max-width: 600px) {
       margin-top: 9.85rem;
@@ -140,6 +141,11 @@
       }
     }
   }
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .active {

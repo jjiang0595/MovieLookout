@@ -22,3 +22,16 @@
     user-select: none;
   }
 }
+
+.fadeout {
+  animation: fadeout .5s forwards;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

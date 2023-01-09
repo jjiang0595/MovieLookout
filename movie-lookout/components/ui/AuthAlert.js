@@ -7,12 +7,22 @@ import {auth} from '../../store/firebaseConfig';
 const AuthAlert = (props) => {
     const [showAlert, setShowAlert] = useState(true);
     const [alertMessage, setAlertMessage] = useState(null);
+    const [fade, setFade] = useState(false);
     const authCtx = useContext(AuthContext);
     const user = auth.currentUser;
     const router = useRouter();
 
+    useEffect(() => {
+        setFade(false);
+    }, [showAlert, authCtx.userId])
+
     const hideAlert = () => {
-        setShowAlert(false);
+        setFade(true);
+        setTimeout(() => {
+            setShowAlert(false);
+            setFade(false);
+
+        }, 500)
     }
 
     useEffect(() => {
@@ -28,7 +38,7 @@ const AuthAlert = (props) => {
     return (
         <>
             {showAlert &&
-                <div className={`${styles.alert}`}>
+                <div className={`${styles.alert} ${fade && styles.fadeout}`}>
                     <p className={styles.alert__text}>{alertMessage}</p>
                     <button className={styles.alert__x} onClick={hideAlert}>x</button>
                 </div>}

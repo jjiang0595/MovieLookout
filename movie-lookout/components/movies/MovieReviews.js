@@ -21,6 +21,7 @@ const MovieReviews = (props) => {
     const [reviews, setReviews] = useState([]);
     const [stars, setStars] = useState(0);
     const [uid, setUid] = useState(authCtx.userId)
+    const [fade, setFade] = useState(false);
 
     const [userReview, setUserReview] = useState(null);
     const userRef = ref(db, `movies/${props.movieId}/reviews/${authCtx.userId}`);
@@ -65,6 +66,10 @@ const MovieReviews = (props) => {
         await remove(ref(db, `movies/${props.movieId}/reviews/${authCtx.userId}`))
     }
 
+    const fadeOut = () => {
+        setFade(true);
+    }
+
     const submitHandler = async (event) => {
         event.preventDefault();
         // UPDATING USER REVIEW
@@ -82,6 +87,7 @@ const MovieReviews = (props) => {
         title.current.value = '';
         review.current.value = '';
         setStars(0);
+        setUserReview(newReview);
 
         let starsReset = document.getElementsByName('stars');
         for (let i = 0; i < starsReset.length; i++) {
@@ -96,7 +102,7 @@ const MovieReviews = (props) => {
             stars: newReview.stars,
         })
 
-
+        setFade(false)
     }
 
     return (
@@ -105,8 +111,8 @@ const MovieReviews = (props) => {
             <div className={styles.reviews__list}>
                 {userReview &&
                     <div key={userReview.id}>
-                        <span>Your Review</span>
-                        <div className={styles.reviews__list__item}>
+                        <span className={styles.reviews__list__title}>Your Review</span>
+                        <div className={`${styles.reviews__list__item} ${fade && styles.reviews__list__item__fadeout}`}>
                             <div className={styles.reviews__list__item__header__selfRating}>
                                 <div>
                                     <svg className={styles.reviews__star}>
@@ -116,10 +122,11 @@ const MovieReviews = (props) => {
                                         className={styles.reviews__list__item__header__selfRating__text}>{userReview.stars}/5
                                     </span>
                                 </div>
-                                <button className={styles.reviews__button} onClick={deleteHandler}>
+                                <button className={styles.reviews__button} onClick={() => fadeOut(setTimeout(() => deleteHandler(), 500))}>
                                     <svg className={styles.reviews__button__close}>
                                         <use href="/sprite.svg#icon-close"></use>
                                     </svg>
+                                    <span className={styles.reviews__button__text}>Delete Review?</span>
                                 </button>
                             </div>
                             <div className={styles.reviews__list__item__header}>
@@ -129,9 +136,11 @@ const MovieReviews = (props) => {
                                 <span className={styles.reviews__list__item__body__text}>{userReview.review}</span>
                             </div>
                         </div>
+                        <hr></hr>
+                        <br></br>
                     </div>}
 
-                {reviews.length > 0 &&
+                {(reviews.length > 0 || userReview) ?
                     reviews.map(review => (
                         <div className={styles.reviews__list__item} key={review.id}>
                             <div className={styles.reviews__list__item__header__rating}>
@@ -148,7 +157,7 @@ const MovieReviews = (props) => {
                             </div>
                         </div>
                     ))
-                }
+                : <p>There are no reviews for this movie yet.</p>}
 
             </div>
 
@@ -226,7 +235,7 @@ const MovieReviews = (props) => {
                                       required/>
                         </div>
                         <button className={styles.reviews__form__button}>Submit</button>
-                    </form> : <p>Please login to leave a review!</p>}
+                    </form> : <p className={styles.reviews__form__guest}>Please login to leave a review!</p>}
             </div>
         </div>)
 }
