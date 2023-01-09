@@ -12,9 +12,10 @@ function MainNavigation() {
         return authCtx.watchlistLength;
     })
 
-    if (authCtx.isLoggedIn) {
-        const watchlistLengthRef = ref(db, `users/${authCtx.userId}/watchlist`)
-        onValue(watchlistLengthRef, snapshot => {
+    useEffect(() => {
+        const watchlistRef = ref(db, `users/${authCtx.userId}/watchlist`);
+        onValue(watchlistRef, (snapshot) => {
+            const data = snapshot.val();
             if (snapshot.exists()) {
                 const data = snapshot.val();
                 authCtx.setLength(Object.keys(data).length);
@@ -22,7 +23,7 @@ function MainNavigation() {
                 authCtx.setLength(0);
             }
         })
-    }
+    }, [authCtx.userId])
 
 
     return (

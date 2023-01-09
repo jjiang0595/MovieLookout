@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {getIdToken, getAuth, onIdTokenChanged} from "firebase/auth";
+import {onIdTokenChanged} from "firebase/auth";
 import {auth} from "./firebaseConfig";
 import {useRouter} from "next/router";
 

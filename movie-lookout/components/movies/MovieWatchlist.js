@@ -37,7 +37,7 @@ function MovieWatchlist() {
                         {watchlist.map(movie => (
                             <WatchlistItem key={movie.id} movieId={movie.id} image={movie.image}/>
                         ))}
-                    </div>*
+                    </div>
                     <img src="/jerry_sleeping.png" alt="jerry sleeping" className={styles.list__empty__img}/>
                 </>
             }
