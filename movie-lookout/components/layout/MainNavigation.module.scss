@@ -7,7 +7,8 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 3px black solid;
-  min-height: 6.5rem;
+  min-height: 6rem;
+  font-family: 'Lato';
 
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -21,8 +22,10 @@
 
 // LOGO
 .logo {
-  height: 5rem;
+  margin-top: .3rem;
+  height: 4.3rem;
   margin-left: 3rem;
+  align-items: center;
 
 
   @media only screen and (max-width: 1200px) {
@@ -112,8 +115,8 @@
   &__dropdown {
     position: absolute;
     display: none;
-    margin-top: 10.55rem;
-    width: 11.3rem;
+    margin-top: 10rem;
+    width: 11.45rem;
     background-color: #62B6B7;
     align-items: stretch;
     border-top: 1px solid black;

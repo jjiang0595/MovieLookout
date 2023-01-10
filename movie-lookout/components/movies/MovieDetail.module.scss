@@ -3,6 +3,7 @@
   background-size: cover;
   user-select: none;
 
+
   &__content {
     background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.5));
     padding: 3rem 3rem;
@@ -37,17 +38,20 @@
     }
 
     & > * {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     &__title {
       color: white;
-      font-size: 3.5rem;
+      font-size: 4rem;
       font-weight: 700;
+      font-family: "Noto Serif";
     }
 
     &__overview {
       color: white;
+      font-family: "Lato";
+      font-size: 1.7rem;
     }
 
     &__button {

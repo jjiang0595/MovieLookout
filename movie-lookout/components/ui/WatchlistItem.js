@@ -26,7 +26,7 @@ const WatchlistItem = (props) => {
             </Link>
             <button className={styles.item__button} onClick={deleteWatchlistItem}>
                 <svg className={styles.item__button__icon}>
-                    <use href="/sprite.svg#icon-checkmark"></use>
+                    <use href="/sprite.svg#icon-check"></use>
                 </svg>
             </button>
         </div>

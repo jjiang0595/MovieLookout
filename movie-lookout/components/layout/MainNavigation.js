@@ -29,7 +29,7 @@ function MainNavigation() {
     return (
         <header className={styles.header}>
             <Link href={'/'}>
-                <img src="/MovieLookoutLogo.png" alt="movie logo" className={styles.logo}/>
+                <img src="/NewMovieLookoutLogo.png" alt="movie logo" className={styles.logo}/>
             </Link>
             <Searchbar/>
             <nav className={styles.userNav}>

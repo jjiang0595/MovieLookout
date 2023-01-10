@@ -3,7 +3,6 @@ import {useContext, useEffect, useRef, useState} from "react";
 import AuthContext from "../../store/auth-context";
 import {useRouter} from "next/router";
 import {
-    getAuth,
     setPersistence,
     signInWithEmailAndPassword,
     browserSessionPersistence,

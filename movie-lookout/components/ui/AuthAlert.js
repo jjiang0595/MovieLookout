@@ -12,10 +12,6 @@ const AuthAlert = (props) => {
     const user = auth.currentUser;
     const router = useRouter();
 
-    useEffect(() => {
-        setFade(false);
-    }, [showAlert, authCtx.userId])
-
     const hideAlert = () => {
         setFade(true);
         setTimeout(() => {
@@ -30,7 +26,7 @@ const AuthAlert = (props) => {
                 setAlertMessage(router.query.message);
                 setShowAlert(true);
             } else {
-                hideAlert();
+                setShowAlert(false);
             }
         }, [authCtx.isLoggedIn, router.query.message]
     )
