@@ -7,6 +7,10 @@ const SearchResults = (props) => {
     const query = router.query.query;
     const header = query ? `Search for "${query}"` : 'Search Results';
 
+    useEffect(() => {
+        document.title = `${query} | Movie Lookout`
+    })
+
     return <MovieList movies={props.movies} header={header} />
 }
 
@@ -16,9 +20,6 @@ export async function getServerSideProps({query}) {
     const data = await res.json();
     const movies = data.results;
 
-    useEffect(() => {
-        document.title = `${searchQuery} | Movie Lookout`
-    })
     return {
         props: {
             movies: movies.map(movie => ({
