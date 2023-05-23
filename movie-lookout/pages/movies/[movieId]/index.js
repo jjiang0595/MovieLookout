@@ -1,6 +1,12 @@
 import MovieDetail from '../../../components/movies/MovieDetail';
+import {useEffect} from "react";
 
 const MovieDetailsPage = (props) => {
+
+    useEffect(() => {
+        document.title = `${props.movieData.title} | Movie Lookout`
+    })
+
     return (
         <MovieDetail
             movieData={props.movieData}

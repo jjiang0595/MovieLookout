@@ -1,4 +1,4 @@
-import {useMemo} from "react";
+import {useEffect, useMemo} from "react";
 import MovieWatchlist from "../../components/movies/MovieWatchlist";
 import {useRouter} from "next/router";
 import {auth} from '../../store/firebaseConfig';
@@ -9,6 +9,9 @@ const Watchlist = () => {
 
     if (typeof window === "undefined") return null;
 
+    useEffect(() => {
+        document.title = 'Watchlist | Movie Lookout'
+    })
 
     useMemo(() => {
         if (!user) {

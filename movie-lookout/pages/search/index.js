@@ -1,5 +1,6 @@
 import {useRouter} from "next/router";
 import MovieList from "../../components/movies/MovieList";
+import {useEffect} from "react";
 
 const SearchResults = (props) => {
     const router = useRouter();
@@ -15,6 +16,9 @@ export async function getServerSideProps({query}) {
     const data = await res.json();
     const movies = data.results;
 
+    useEffect(() => {
+        document.title = `${searchQuery} | Movie Lookout`
+    })
     return {
         props: {
             movies: movies.map(movie => ({
