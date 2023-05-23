@@ -3,7 +3,6 @@
   background-size: cover;
   user-select: none;
 
-
   &__content {
     background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.5));
     padding: 3rem 3rem;
@@ -21,6 +20,10 @@
   &__image {
     border-radius: 1rem;
     width: 30rem;
+
+    @media only screen and (max-width: 310px) {
+      width: 25rem;
+    }
   }
 
   &__header {
@@ -45,12 +48,16 @@
       color: white;
       font-size: 4rem;
       font-weight: 700;
-      font-family: "Noto Serif";
+      font-family: "Noto Serif", serif;
+
+      @media only screen and (max-width: 310px) {
+        font-size: 3rem;
+      }
     }
 
     &__overview {
       color: white;
-      font-family: "Lato";
+      font-family: "Lato", serif;
       font-size: 1.7rem;
     }
 

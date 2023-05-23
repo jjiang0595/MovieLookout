@@ -11,6 +11,22 @@ function MainNavigation() {
     const watchlistLength = useMemo(() => {
         return authCtx.watchlistLength;
     })
+    const [logo, setLogo] = useState(true);
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(max-width: 460px)');
+        const handleMediaQueryChange = (e) => {
+            if (e.matches) {
+                setLogo(false);
+                console.log("A")
+            } else {
+                setLogo(true);
+                console.log("B")
+            }
+        }
+
+        handleMediaQueryChange(mediaQuery);
+        mediaQuery.addEventListener('change', handleMediaQueryChange);
+    }, [])
 
     useEffect(() => {
         const watchlistRef = ref(db, `users/${authCtx.userId}/watchlist`);
@@ -29,7 +45,11 @@ function MainNavigation() {
     return (
         <header className={styles.header}>
             <Link href={'/'}>
-                <img src="/NewMovieLookoutLogo.png" alt="movie logo" className={styles.logo}/>
+                {logo ?
+                    <img src="/NewMovieLookoutLogo.png" alt="movie logo" className={styles.logo}/>
+                    :
+                    <img src="/MovieLookoutInitials.png" alt="movie logo" className={styles.logo}/>
+                }
             </Link>
             <Searchbar/>
             <nav className={styles.userNav}>

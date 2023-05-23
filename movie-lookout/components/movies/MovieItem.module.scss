@@ -11,6 +11,15 @@
       height: 25.8rem;
       object-fit: cover;
 
+    @media only screen and (max-width: 625px) {
+      width: 14.65rem;
+      height: 21rem;
+    }
+
+    @media only screen and (max-width: 460px) {
+      width: 11.16rem;
+      height: 16rem;
+    }
   }
 
   &__content {

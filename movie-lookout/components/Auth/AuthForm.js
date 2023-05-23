@@ -11,7 +11,7 @@ import {
 } from "firebase/auth";
 import {auth, db} from "../../store/firebaseConfig";
 import {ref, set} from "firebase/database";
-import AuthCodeMap from "./AuthCodeMap";
+import AuthCodeMap from "../../../../FoodGourmet/client/src/components/user/AuthCodeMap";
 
 const AuthForm = (props) => {
     const router = useRouter();
