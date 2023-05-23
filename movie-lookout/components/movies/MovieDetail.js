@@ -1,6 +1,6 @@
 import styles from './MovieDetail.module.scss';
 import AuthContext from "../../store/auth-context";
-import {useContext, useEffect, useMemo, useState} from "react";
+import {useContext, useMemo, useState} from "react";
 import {db} from "../../store/firebaseConfig";
 import {set, ref, remove, onValue} from "firebase/database";
 import MovieReviews from "./MovieReviews";

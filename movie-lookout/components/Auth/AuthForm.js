@@ -1,6 +1,5 @@
 import styles from './AuthForm.module.scss'
-import {useContext, useEffect, useRef, useState} from "react";
-import AuthContext from "../../store/auth-context";
+import {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
 import {
     setPersistence,
@@ -11,15 +10,13 @@ import {
 } from "firebase/auth";
 import {auth, db} from "../../store/firebaseConfig";
 import {ref, set} from "firebase/database";
-import AuthCodeMap from "../../../../FoodGourmet/client/src/components/user/AuthCodeMap";
+import AuthCodeMap from "./AuthCodeMap";
 
 const AuthForm = (props) => {
     const router = useRouter();
     const [authType, setAuthType] = useState(true);
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
-
-    const authCtx = useContext(AuthContext)
 
     useEffect(() => {
         router.prefetch('/');
