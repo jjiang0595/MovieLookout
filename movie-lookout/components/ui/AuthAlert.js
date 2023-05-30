@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 import {auth} from '../../store/firebaseConfig';
 
 const AuthAlert = (props) => {
-    const [showAlert, setShowAlert] = useState(true);
+    const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState(null);
     const [fade, setFade] = useState(false);
     const authCtx = useContext(AuthContext);
